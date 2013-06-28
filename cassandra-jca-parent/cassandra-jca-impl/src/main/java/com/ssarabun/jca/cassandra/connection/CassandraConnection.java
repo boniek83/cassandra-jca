@@ -23,6 +23,7 @@ import org.apache.cassandra.thrift.AuthenticationRequest;
 import org.apache.cassandra.thrift.AuthorizationException;
 import org.apache.cassandra.thrift.Cassandra;
 import org.apache.cassandra.thrift.InvalidRequestException;
+import org.apache.commons.lang.StringUtils;
 import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TBinaryProtocol;
 import org.apache.thrift.protocol.TProtocol;
@@ -56,7 +57,9 @@ public class CassandraConnection implements com.ssarabun.jca.cassandra.api.Cassa
 
         transport.open();
 
-        if (properties.getUsername() != null && properties.getPassword() != null) {
+        if (StringUtils.isNotBlank(properties.getUsername())
+                && StringUtils.isNotBlank(properties.getPassword())) {
+            
             Map<String, String> credentials = new HashMap<String, String>();
             //TODO
             AuthenticationRequest request = new AuthenticationRequest(credentials);
@@ -64,7 +67,9 @@ public class CassandraConnection implements com.ssarabun.jca.cassandra.api.Cassa
             ifacel.login(request);
         }
 
-        ifacel.set_keyspace(properties.getKeyspace());
+        if (StringUtils.isNotBlank(properties.getKeyspace())) {
+            ifacel.set_keyspace(properties.getKeyspace());
+        }
     }
 
     public Cassandra.Iface getInternalConnection() {
