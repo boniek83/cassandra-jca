@@ -17,7 +17,7 @@
 package com.ssarabun.jca.cassandra.api;
 
 import java.io.Serializable;
-import javax.naming.Referenceable;
+import javax.resource.Referenceable;
 import javax.resource.ResourceException;
 
 /**

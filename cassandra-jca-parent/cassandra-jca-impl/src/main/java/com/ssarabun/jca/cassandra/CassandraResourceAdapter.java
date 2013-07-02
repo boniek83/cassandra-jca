@@ -51,4 +51,27 @@ public class CassandraResourceAdapter implements ResourceAdapter {
     public XAResource[] getXAResources(ActivationSpec[] specs) throws ResourceException {
         return null;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+
+        final CassandraResourceAdapter other = (CassandraResourceAdapter) obj;
+
+        //TODO
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 29 * hash;
+        return hash;
+    }
 }

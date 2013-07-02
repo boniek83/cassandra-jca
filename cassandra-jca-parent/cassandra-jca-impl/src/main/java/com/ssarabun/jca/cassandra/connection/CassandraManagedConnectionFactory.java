@@ -81,4 +81,26 @@ public class CassandraManagedConnectionFactory
     public Set getInvalidConnections(Set connectionSet) throws ResourceException {
         throw new UnsupportedOperationException("Not supported yet.");
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final CassandraManagedConnectionFactory other = (CassandraManagedConnectionFactory) obj;
+        if (this.ra != other.ra && (this.ra == null || !this.ra.equals(other.ra))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 53 * hash + (this.ra != null ? this.ra.hashCode() : 0);
+        return hash;
+    }
 }
