@@ -5,15 +5,15 @@
     
     <parent>
         <groupId>com.ssarabun.jca.cassandra.example</groupId>
-        <artifactId>cassandra-jca-jboss</artifactId>
+        <artifactId>cassandra-jca-jboss-as-7</artifactId>
         <version>0.0.1</version>
     </parent>
     
     <groupId>com.ssarabun.jca.cassandra.example</groupId>
-    <artifactId>cassandra-jca-jboss-ear</artifactId>
+    <artifactId>cassandra-jca-jboss-as-7-ear</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>ear</packaging>
-    <name>cassandra-jca-jboss-ear</name>
+    <name>cassandra-jca-jboss-as-7-ear</name>
     <url>http://maven.apache.org</url>
     
     <properties>
@@ -22,14 +22,14 @@
     
     <dependencies>
         <dependency>
-            <groupId>com.ssarabun.jca.cassandra</groupId>
-            <artifactId>cassandra-jca-rar</artifactId>
+            <groupId>com.ssarabun.jca.cassandra.example</groupId>
+            <artifactId>cassandra-jca-jboss-as-7-rar</artifactId>
             <version>0.0.1-ra</version>
             <type>rar</type>
         </dependency>
         <dependency>
             <groupId>com.ssarabun.jca.cassandra.example</groupId>
-            <artifactId>cassandra-jca-jboss-ejb</artifactId>
+            <artifactId>cassandra-jca-jboss-as-7-ejb</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <type>ejb</type>
         </dependency>
@@ -54,6 +54,11 @@
                     <source>1.6</source>
                     <target>1.6</target>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.jboss.as.plugins</groupId>
+                <artifactId>jboss-as-maven-plugin</artifactId>
+                <version>7.1.1.Final</version>
             </plugin>
         </plugins>
     </build>

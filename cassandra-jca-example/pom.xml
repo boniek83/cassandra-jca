@@ -11,5 +11,6 @@
     
     <modules>
         <module>cassandra-jca-jboss</module>
+        <module>cassandra-jca-jboss-as-7</module>
     </modules>
 </project>

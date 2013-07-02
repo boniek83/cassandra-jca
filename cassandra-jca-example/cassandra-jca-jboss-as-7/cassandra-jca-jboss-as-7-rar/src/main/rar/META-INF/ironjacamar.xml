@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ironjacamar>
+    <connection-definitions>
+        <connection-definition 
+            class-name="com.ssarabun.jca.cassandra.connection.CassandraManagedConnectionFactory" 
+            jndi-name="java:/eis/CassandraConnectionFactory">
+
+            <config-property name="Server" type="java.lang.String">localhost</config-property>
+            <config-property name="Port" type="java.lang.Integer">9160</config-property>
+            <config-property name="Timeout" type="java.lang.Integer">30000</config-property>
+
+            <pool>
+                <min-pool-size>5</min-pool-size>
+                <max-pool-size>10</max-pool-size>
+            </pool>
+        </connection-definition>
+    </connection-definitions>
+</ironjacamar>
