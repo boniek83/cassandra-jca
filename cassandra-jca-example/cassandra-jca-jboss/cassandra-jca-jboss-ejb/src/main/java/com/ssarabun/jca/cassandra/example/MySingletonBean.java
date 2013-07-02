@@ -17,6 +17,7 @@
 package com.ssarabun.jca.cassandra.example;
 
 import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.ejb.Local;
@@ -41,7 +42,7 @@ import com.ssarabun.jca.cassandra.api.CassandraConnectionFactory;
 public class MySingletonBean implements MySingleton {
 
     private static final Logger logger = LoggerFactory.getLogger(MySingletonBean.class);
-    @Resource(mappedName = "java:/CassandraConnectionFactory")
+    @Resource(mappedName = "java:/eis/CassandraConnectionFactory")
     private CassandraConnectionFactory cf;
 
     @PostConstruct

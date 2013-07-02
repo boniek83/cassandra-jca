@@ -10,10 +10,10 @@
     </parent>
     
     <groupId>com.ssarabun.jca.cassandra.example</groupId>
-    <artifactId>cassandra-jca-ear</artifactId>
+    <artifactId>cassandra-jca-jboss-ear</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>ear</packaging>
-    <name>cassandra-jca-ear</name>
+    <name>cassandra-jca-jboss-ear</name>
     <url>http://maven.apache.org</url>
     
     <properties>
@@ -28,7 +28,7 @@
             <type>rar</type>
         </dependency>
         <dependency>
-            <groupId>com.ssarabun.jca.cassandra</groupId>
+            <groupId>com.ssarabun.jca.cassandra.example</groupId>
             <artifactId>cassandra-jca-ejb</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <type>ejb</type>

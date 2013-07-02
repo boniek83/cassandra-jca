@@ -16,8 +16,8 @@
     <name>cassandra-jca-jboss</name>
     
     <modules>
-        <module>cassandra-jca-ejb</module>
-        <module>cassandra-jca-ear</module>
+        <module>cassandra-jca-jboss-ejb</module>
+        <module>cassandra-jca-jboss-ear</module>
     </modules>
 
     <dependencies>
