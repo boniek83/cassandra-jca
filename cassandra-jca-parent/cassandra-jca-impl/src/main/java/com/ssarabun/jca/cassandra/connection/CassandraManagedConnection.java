@@ -44,7 +44,7 @@ public class CassandraManagedConnection implements ManagedConnection {
     private List<ConnectionEventListener> listeners = new ArrayList<ConnectionEventListener>();
     private CassandraManagedConnectionFactory cmcf;
     //
-    private CassandraConnection internalConnection;
+    private CassandraConnection cassandraConnection;
 
     public CassandraManagedConnection(CassandraManagedConnectionFactory cmcf) {
         this.cmcf = cmcf;
@@ -52,34 +52,34 @@ public class CassandraManagedConnection implements ManagedConnection {
 
     public Object getConnection(Subject subject, ConnectionRequestInfo cxRequestInfo) throws ResourceException {
 
-        if (internalConnection == null) {
+        if (cassandraConnection == null) {
             try {
-                internalConnection = new CassandraConnection(cmcf);
+                cassandraConnection = new CassandraConnection(cmcf);
             } catch (Exception ex) {
                 throw new ResourceException(ex);
             }
         }
 
-        return internalConnection;
+        return cassandraConnection;
     }
 
     public void destroy() throws ResourceException {
-        if (internalConnection != null) {
-            internalConnection.close();
-            internalConnection = null;
+        if (cassandraConnection != null) {
+            cassandraConnection.close();
+            cassandraConnection = null;
         }
     }
 
     public void cleanup() throws ResourceException {
-        if (internalConnection != null) {
-            internalConnection.close();
-            internalConnection = null;
+        if (cassandraConnection != null) {
+            cassandraConnection.close();
+            cassandraConnection = null;
         }
     }
 
     public void associateConnection(Object connection) throws ResourceException {
         if (connection instanceof CassandraConnection) {
-            internalConnection = (CassandraConnection) connection;
+            cassandraConnection = (CassandraConnection) connection;
         }
     }
 

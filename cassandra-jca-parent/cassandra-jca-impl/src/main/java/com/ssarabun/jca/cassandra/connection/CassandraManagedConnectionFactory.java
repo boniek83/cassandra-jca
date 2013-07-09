@@ -84,10 +84,13 @@ public class CassandraManagedConnectionFactory
 
     @Override
     public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
         if (obj == null) {
             return false;
         }
-        if (getClass() != obj.getClass()) {
+        if (!(obj instanceof CassandraManagedConnectionFactory)) {
             return false;
         }
         final CassandraManagedConnectionFactory other = (CassandraManagedConnectionFactory) obj;
