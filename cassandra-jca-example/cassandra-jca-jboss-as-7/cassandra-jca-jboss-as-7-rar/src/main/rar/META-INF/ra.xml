@@ -16,10 +16,10 @@
         <resourceadapter-class>com.ssarabun.jca.cassandra.CassandraResourceAdapter</resourceadapter-class>
         <outbound-resourceadapter>
             <connection-definition>
-                <managedconnectionfactory-class>com.ssarabun.jca.cassandra.connection.CassandraManagedConnectionFactory</managedconnectionfactory-class>
+                <managedconnectionfactory-class>com.ssarabun.jca.cassandra.connection.factory.CassandraManagedConnectionFactory</managedconnectionfactory-class>
 
                 <connectionfactory-interface>com.ssarabun.jca.cassandra.api.CassandraConnectionFactory</connectionfactory-interface>
-                <connectionfactory-impl-class>com.ssarabun.jca.cassandra.connection.CassandraConnectionFactory</connectionfactory-impl-class>
+                <connectionfactory-impl-class>com.ssarabun.jca.cassandra.connection.factory.CassandraConnectionFactory</connectionfactory-impl-class>
 
                 <connection-interface>com.ssarabun.jca.cassandra.api.CassandraConnection</connection-interface>
                 <connection-impl-class>com.ssarabun.jca.cassandra.connection.CassandraConnection</connection-impl-class>

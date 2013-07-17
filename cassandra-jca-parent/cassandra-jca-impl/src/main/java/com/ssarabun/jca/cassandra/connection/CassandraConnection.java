@@ -16,19 +16,11 @@
  */
 package com.ssarabun.jca.cassandra.connection;
 
-import java.util.HashMap;
-import java.util.Map;
-import org.apache.cassandra.thrift.AuthenticationException;
-import org.apache.cassandra.thrift.AuthenticationRequest;
-import org.apache.cassandra.thrift.AuthorizationException;
+
+import com.ssarabun.jca.cassandra.managed.connection.CassandraIfaceWrapper;
 import org.apache.cassandra.thrift.Cassandra;
-import org.apache.cassandra.thrift.InvalidRequestException;
-import org.apache.commons.lang.StringUtils;
-import org.apache.thrift.TException;
-import org.apache.thrift.protocol.TBinaryProtocol;
-import org.apache.thrift.protocol.TProtocol;
-import org.apache.thrift.transport.TFramedTransport;
-import org.apache.thrift.transport.TSocket;
+
+import com.ssarabun.jca.cassandra.managed.connection.NewInterface;
 
 /**
  * 
@@ -37,46 +29,24 @@ import org.apache.thrift.transport.TSocket;
  */
 public class CassandraConnection implements com.ssarabun.jca.cassandra.api.CassandraConnection {
 
-    private Cassandra.Iface ifacel;
-    private TFramedTransport transport;
+    private final NewInterface mcf;
+    private CassandraIfaceWrapper iface = null;
 
-    public CassandraConnection(CassandraProperties properties)
-            throws InvalidRequestException,
-            TException,
-            AuthenticationException,
-            AuthorizationException {
-
-        transport = new TFramedTransport(new TSocket(
-                properties.getServer(),
-                properties.getPort(),
-                properties.getTimeout()));
-
-        TProtocol framedProtocol = new TBinaryProtocol(transport);
-
-        ifacel = new Cassandra.Client(framedProtocol);
-
-        transport.open();
-
-        if (StringUtils.isNotBlank(properties.getUsername())
-                && StringUtils.isNotBlank(properties.getPassword())) {
-            
-            Map<String, String> credentials = new HashMap<String, String>();
-            //TODO
-            AuthenticationRequest request = new AuthenticationRequest(credentials);
-            request.validate();
-            ifacel.login(request);
-        }
-
-        if (StringUtils.isNotBlank(properties.getKeyspace())) {
-            ifacel.set_keyspace(properties.getKeyspace());
-        }
+    public CassandraConnection(NewInterface mcf) {
+        this.mcf = mcf;
     }
 
     public Cassandra.Iface getInternalConnection() {
-        return ifacel;
+        if (iface == null) {
+            iface = mcf.getInternalConnection();
+        }
+        return iface;
     }
 
-    protected void close() {
-        transport.close();
+    public void close() {
+        if (iface != null) {
+            iface.setIface(new ClosedCassandraIface());
+        }
+        mcf.close();
     }
 }

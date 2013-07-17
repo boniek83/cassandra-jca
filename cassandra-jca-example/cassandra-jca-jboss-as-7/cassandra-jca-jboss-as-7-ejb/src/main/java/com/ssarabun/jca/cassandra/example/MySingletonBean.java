@@ -50,8 +50,9 @@ public class MySingletonBean implements MySingleton {
 
     @PostConstruct
     public void postConstruct() throws Exception {
+        CassandraConnection c = null;
         try {
-            CassandraConnection c = cf.getConnection();
+            c = cf.getConnection();
 
             List<KsDef> list = c.getInternalConnection().describe_keyspaces();
             for (KsDef ksDef : list) {
@@ -60,6 +61,10 @@ public class MySingletonBean implements MySingleton {
 
         } catch (Exception ex) {
             logger.error(ex.getMessage(), ex);
+        } finally {
+            if (c != null) {
+                c.close();
+            }
         }
     }
 }

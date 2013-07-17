@@ -14,15 +14,11 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.ssarabun.jca.cassandra.connection;
+package com.ssarabun.jca.cassandra.connection.factory;
 
 import javax.naming.NamingException;
 import javax.naming.Reference;
 import javax.resource.ResourceException;
-import javax.resource.cci.Connection;
-import javax.resource.cci.ConnectionSpec;
-import javax.resource.cci.RecordFactory;
-import javax.resource.cci.ResourceAdapterMetaData;
 import javax.resource.spi.ConnectionManager;
 
 import org.slf4j.Logger;
@@ -58,17 +54,5 @@ public class CassandraConnectionFactory implements com.ssarabun.jca.cassandra.ap
 
     public Reference getReference() throws NamingException {
         return reference;
-    }
-
-    public Connection getConnection(ConnectionSpec properties) throws ResourceException {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public RecordFactory getRecordFactory() throws ResourceException {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public ResourceAdapterMetaData getMetaData() throws ResourceException {
-        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

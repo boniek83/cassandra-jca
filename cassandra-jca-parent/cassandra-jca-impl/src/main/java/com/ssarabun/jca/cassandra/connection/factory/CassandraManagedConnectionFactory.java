@@ -14,10 +14,11 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.ssarabun.jca.cassandra.connection;
+package com.ssarabun.jca.cassandra.connection.factory;
 
 import java.io.PrintWriter;
 import java.util.Set;
+
 import javax.resource.ResourceException;
 import javax.resource.spi.ConnectionManager;
 import javax.resource.spi.ConnectionRequestInfo;
@@ -27,8 +28,11 @@ import javax.resource.spi.ResourceAdapter;
 import javax.resource.spi.ResourceAdapterAssociation;
 import javax.resource.spi.ValidatingManagedConnectionFactory;
 import javax.security.auth.Subject;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.ssarabun.jca.cassandra.managed.connection.CassandraManagedConnection;
 
 /**
  * 
@@ -59,7 +63,14 @@ public class CassandraManagedConnectionFactory
     }
 
     public ManagedConnection matchManagedConnections(Set connectionSet, Subject subject, ConnectionRequestInfo cxRequestInfo) throws ResourceException {
-        throw new UnsupportedOperationException("Not supported yet.");
+        ManagedConnection result = null;
+        for (Object object : connectionSet) {
+            if (object instanceof CassandraManagedConnection) {
+                result = (ManagedConnection) object;
+                break;
+            }
+        }
+        return result;
     }
 
     public void setLogWriter(PrintWriter out) throws ResourceException {
@@ -93,10 +104,10 @@ public class CassandraManagedConnectionFactory
         if (!(obj instanceof CassandraManagedConnectionFactory)) {
             return false;
         }
-        final CassandraManagedConnectionFactory other = (CassandraManagedConnectionFactory) obj;
-        if (this.ra != other.ra && (this.ra == null || !this.ra.equals(other.ra))) {
-            return false;
-        }
+//        final CassandraManagedConnectionFactory other = (CassandraManagedConnectionFactory) obj;
+//        if (this.ra != other.ra && (this.ra == null || !this.ra.equals(other.ra))) {
+//            return false;
+//        }
         return true;
     }
 

@@ -14,18 +14,27 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.ssarabun.jca.cassandra.api;
-
-import org.apache.cassandra.thrift.Cassandra;
+package com.ssarabun.jca.cassandra.connection.exception;
 
 /**
- *
+ * 
  * @author sergey.sarabun@gmail.com
- * @date Apr 20, 2013
+ * @date Jul 15, 2013
  */
-public interface CassandraConnection {
+public class ClosedCassandraIfaceException extends RuntimeException {
 
-    Cassandra.Iface getInternalConnection();
+    public ClosedCassandraIfaceException(Throwable cause) {
+        super(cause);
+    }
 
-    void close();
+    public ClosedCassandraIfaceException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
+    public ClosedCassandraIfaceException(String message) {
+        super(message);
+    }
+
+    public ClosedCassandraIfaceException() {
+    }
 }

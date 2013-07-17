@@ -14,7 +14,7 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.ssarabun.jca.cassandra.connection;
+package com.ssarabun.jca.cassandra.managed.connection;
 
 import javax.resource.ResourceException;
 import javax.resource.spi.ManagedConnectionMetaData;
