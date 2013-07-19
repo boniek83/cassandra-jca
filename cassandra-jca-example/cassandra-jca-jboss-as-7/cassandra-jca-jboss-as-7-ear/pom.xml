@@ -1,34 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    
+
     <parent>
-        <groupId>com.ssarabun.jca.cassandra.example</groupId>
+        <groupId>com.googlecode.cassandra-jca.example</groupId>
         <artifactId>cassandra-jca-jboss-as-7</artifactId>
-        <version>0.0.1</version>
+        <version>0.0.1-SNAPSHOT</version>
     </parent>
     
-    <groupId>com.ssarabun.jca.cassandra.example</groupId>
+    <groupId>com.googlecode.cassandra-jca.example</groupId>
     <artifactId>cassandra-jca-jboss-as-7-ear</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <packaging>ear</packaging>
     <name>cassandra-jca-jboss-as-7-ear</name>
-    <url>http://maven.apache.org</url>
+    <packaging>ear</packaging>
+    <version>0.0.1-SNAPSHOT</version>
+    <description></description>
+    <url>http://code.google.com/p/cassandra-jca/source/browse/</url>
     
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     
+
+    <licenses>
+        <license>
+            <name>GNU Lesser General Public License 3.0</name>
+            <url>http://www.gnu.org/licenses/lgpl-3.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <scm>
+        <connection>scm:git:https://code.google.com/p/cassandra-jca/</connection>
+        <developerConnection>scm:git:https://code.google.com/p/cassandra-jca/</developerConnection>
+        <url>http://code.google.com/p/cassandra-jca/source/browse</url>
+    </scm>
+    <developers>
+        <developer>
+            <id>ssarabun</id>
+            <name>Sergey Sarabun</name>
+            <email>sergey.sarabun@gmail.com</email>
+        </developer>
+    </developers>
+
+
     <dependencies>
         <dependency>
-            <groupId>com.ssarabun.jca.cassandra.example</groupId>
+            <groupId>com.googlecode.cassandra-jca.example</groupId>
             <artifactId>cassandra-jca-jboss-as-7-rar</artifactId>
             <version>0.0.1-ra</version>
             <type>rar</type>
         </dependency>
         <dependency>
-            <groupId>com.ssarabun.jca.cassandra.example</groupId>
+            <groupId>com.googlecode.cassandra-jca.example</groupId>
             <artifactId>cassandra-jca-jboss-as-7-ejb</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <type>ejb</type>

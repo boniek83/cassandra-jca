@@ -1,27 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    
+
     <parent>
-        <groupId>com.ssarabun.jca.cassandra.example</groupId>
+        <groupId>com.googlecode.cassandra-jca.example</groupId>
         <artifactId>cassandra-jca-jboss</artifactId>
-        <version>0.0.1</version>
+        <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.ssarabun.jca.cassandra.example</groupId>
+    <groupId>com.googlecode.cassandra-jca.example</groupId>
     <artifactId>cassandra-jca-jboss-ejb</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <packaging>ejb</packaging>
-
     <name>cassandra-jca-jboss-ejb</name>
-
+    <packaging>ejb</packaging>
+    <version>0.0.1-SNAPSHOT</version>
+    <description></description>
+    <url>http://code.google.com/p/cassandra-jca/source/browse/</url>
+    
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <netbeans.hint.license>lgpl30</netbeans.hint.license>
     </properties>
+    
+
+    <licenses>
+        <license>
+            <name>GNU Lesser General Public License 3.0</name>
+            <url>http://www.gnu.org/licenses/lgpl-3.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <scm>
+        <connection>scm:git:https://code.google.com/p/cassandra-jca/</connection>
+        <developerConnection>scm:git:https://code.google.com/p/cassandra-jca/</developerConnection>
+        <url>http://code.google.com/p/cassandra-jca/source/browse</url>
+    </scm>
+    <developers>
+        <developer>
+            <id>ssarabun</id>
+            <name>Sergey Sarabun</name>
+            <email>sergey.sarabun@gmail.com</email>
+        </developer>
+    </developers>
+
 
     <dependencies>
         <dependency>
-            <groupId>com.ssarabun.jca.cassandra</groupId>
+            <groupId>com.googlecode.cassandra-jca</groupId>
             <artifactId>cassandra-jca-api</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>

@@ -29,8 +29,8 @@ import org.apache.cassandra.thrift.KsDef;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.ssarabun.jca.cassandra.api.CassandraConnection;
-import com.ssarabun.jca.cassandra.api.CassandraConnectionFactory;
+import com.googlecode.cassadra.jca.api.CassandraConnection;
+import com.googlecode.cassadra.jca.api.CassandraConnectionFactory;
 
 /**
  * 
