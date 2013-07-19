@@ -16,10 +16,12 @@
  */
 package com.googlecode.cassadra.jca.connection.factory;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 import javax.annotation.Resource;
+import javax.resource.ResourceException;
 
 import org.apache.cassandra.thrift.KsDef;
 import org.jboss.arquillian.container.test.api.Deployment;
@@ -48,12 +50,11 @@ import com.googlecode.cassadra.jca.ra.CassandraResourceAdapter;
 @RunWith(Arquillian.class)
 public class CassandraJCATest {
 
+    private static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(CassandraJCATest.class);
     private static String deploymentName = "ConnectorTestCase";
 
     @Deployment
     public static ResourceAdapterArchive createDeployment() {
-        ResourceAdapterArchive rar =
-                ShrinkWrap.create(ResourceAdapterArchive.class, deploymentName + ".rar");
         JavaArchive jar = ShrinkWrap.create(JavaArchive.class,
                 UUID.randomUUID().toString() + ".jar");
         jar.addPackage(CassandraResourceAdapter.class.getPackage());
@@ -61,12 +62,16 @@ public class CassandraJCATest {
         jar.addPackage(ClosedCassandraIfaceException.class.getPackage());
         jar.addPackage(CassandraManagedConnectionFactory.class.getPackage());
         jar.addPackage(CassandraManagedConnection.class.getPackage());
+
+        ResourceAdapterArchive rar =
+                ShrinkWrap.create(ResourceAdapterArchive.class, deploymentName + ".rar");
         rar.addAsLibrary(jar);
         rar.addAsManifestResource("META-INF/ironjacamar.xml", "ironjacamar.xml");
         rar.addAsManifestResource("META-INF/ra.xml", "ra.xml");
 
         MavenDependencyResolver resolver = DependencyResolvers.use(MavenDependencyResolver.class).loadMetadataFromPom("pom.xml");
-        resolver.artifact("com.googlecode.cassadra.jca:cassandra-jca-api");
+        resolver.artifact("com.googlecode.cassandra-jca:cassandra-jca-api");
+        resolver.artifact("org.apache.cassandra:cassandra-clientutil");
         rar.addAsLibraries(resolver.resolveAsFiles());
 
         return rar;
@@ -87,5 +92,28 @@ public class CassandraJCATest {
         assertFalse(list.isEmpty());
 
         c.close();
+    }
+
+    @Test
+    public void testMaxConnections() throws Throwable {
+        assertNotNull(cf);
+
+        List<CassandraConnection> list = new ArrayList<CassandraConnection>();
+        try {
+            for (int i = 0; i < 50; i++) {
+                CassandraConnection c = cf.getConnection();
+                assertNotNull(c);
+                list.add(c);
+            }
+
+            throw new Exception("Test failed.");
+        } catch (ResourceException ex) {
+            logger.info("ex = " + ex);
+            logger.info("It's true");
+        } finally {
+            for (CassandraConnection cassandraConnection : list) {
+                cassandraConnection.close();
+            }
+        }
     }
 }

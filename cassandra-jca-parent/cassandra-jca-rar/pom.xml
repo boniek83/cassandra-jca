@@ -1,28 +1,53 @@
-<?xml version="1.0"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    
     <parent>
-        <groupId>com.googlecode.cassadra.jca</groupId>
+        <groupId>com.googlecode.cassandra-jca</groupId>
         <artifactId>cassandra-jca-parent</artifactId>
-        <version>0.0.1</version>
+        <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <groupId>com.googlecode.cassadra.jca</groupId>
+    
+    <groupId>com.googlecode.cassandra-jca</groupId>
     <artifactId>cassandra-jca-rar</artifactId>
-    <version>0.0.1-ra</version>
     <packaging>rar</packaging>
     <name>cassandra-jca-rar</name>
-    <url>http://maven.apache.org</url>
+    <version>0.0.1-ra</version>
+    <description></description>
+    <url>http://code.google.com/p/cassandra-jca/source/browse/</url>
+
     
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-    
+
+
+    <licenses>
+        <license>
+            <name>GNU Lesser General Public License 3.0</name>
+            <url>http://www.gnu.org/licenses/lgpl-3.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <scm>
+        <connection>scm:git:https://code.google.com/p/cassandra-jca/</connection>
+        <developerConnection>scm:git:https://code.google.com/p/cassandra-jca/</developerConnection>
+        <url>http://code.google.com/p/cassandra-jca/source/browse</url>
+    </scm>
+    <developers>
+        <developer>
+            <id>ssarabun</id>
+            <name>Sergey Sarabun</name>
+            <email>sergey.sarabun@gmail.com</email>
+        </developer>
+    </developers>
+
+
     <dependencies>
         <dependency>
-            <groupId>com.googlecode.cassadra.jca</groupId>
+            <groupId>com.googlecode.cassandra-jca</groupId>
             <artifactId>cassandra-jca-impl</artifactId>
-            <version>0.0.1</version>    
+            <version>0.0.1-SNAPSHOT</version>    
         </dependency>
     </dependencies>
 </project>
