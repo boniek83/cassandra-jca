@@ -3,11 +3,11 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
     <parent>
+        <groupId>com.googlecode.cassadra.jca</groupId>
         <artifactId>cassandra-jca-parent</artifactId>
-        <groupId>com.ssarabun.jca.cassandra</groupId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>0.0.1</version>
     </parent>
-    <groupId>com.ssarabun.jca.cassandra</groupId>
+    <groupId>com.googlecode.cassadra.jca</groupId>
     <artifactId>cassandra-jca-rar</artifactId>
     <version>0.0.1-ra</version>
     <packaging>rar</packaging>
@@ -20,9 +20,9 @@
     
     <dependencies>
         <dependency>
-            <groupId>com.ssarabun.jca.cassandra</groupId>
+            <groupId>com.googlecode.cassadra.jca</groupId>
             <artifactId>cassandra-jca-impl</artifactId>
-            <version>0.0.1-SNAPSHOT</version>    
+            <version>0.0.1</version>    
         </dependency>
     </dependencies>
 </project>

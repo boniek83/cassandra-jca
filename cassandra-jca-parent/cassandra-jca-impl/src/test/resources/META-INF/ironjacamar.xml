@@ -2,7 +2,7 @@
 <ironjacamar>
     <connection-definitions>
         <connection-definition 
-            class-name="com.ssarabun.jca.cassandra.connection.factory.CassandraManagedConnectionFactory" 
+            class-name="com.googlecode.cassadra.jca.connection.factory.CassandraManagedConnectionFactory" 
             jndi-name="java:/eis/CassandraConnectionFactory">
 
             <config-property name="Server" type="java.lang.String">localhost</config-property>
