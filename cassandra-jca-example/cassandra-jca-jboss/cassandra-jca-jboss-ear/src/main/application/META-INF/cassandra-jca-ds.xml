@@ -7,8 +7,8 @@
 <connection-factories>
     <no-tx-connection-factory>
         <jndi-name>eis/CassandraConnectionFactory</jndi-name>
-        <rar-name>cassandra-jca-jboss-ear-0.0.1-SNAPSHOT.ear#cassandra-jca-rar-0.0.1-ra.rar</rar-name>
-        <connection-definition>com.ssarabun.jca.cassandra.api.CassandraConnectionFactory</connection-definition>
+        <rar-name>cassandra-jca-jboss-ear-0.0.1-SNAPSHOT.ear#cassandra-jca-rar-0.0.1-SNAPSHOT.rar</rar-name>
+        <connection-definition>com.googlecode.cassadra.jca.api.CassandraConnectionFactory</connection-definition>
 
         <config-property name="Server" type="java.lang.String">localhost</config-property>
         <config-property name="Port" type="java.lang.Integer">9160</config-property>
@@ -18,7 +18,6 @@
         <config-property name="Password" type="java.lang.String">test</config-property>
         <config-property name="Keyspace" type="java.lang.String">test</config-property>
         -->
-        
         <min-pool-size>5</min-pool-size>
         <max-pool-size>10</max-pool-size>
     </no-tx-connection-factory>
