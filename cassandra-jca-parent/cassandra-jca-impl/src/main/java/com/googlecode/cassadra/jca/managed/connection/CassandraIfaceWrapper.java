@@ -24,7 +24,6 @@ import org.apache.cassandra.thrift.AuthenticationRequest;
 import org.apache.cassandra.thrift.AuthorizationException;
 import org.apache.cassandra.thrift.Cassandra;
 import org.apache.cassandra.thrift.CfDef;
-import org.apache.cassandra.thrift.CfSplit;
 import org.apache.cassandra.thrift.Column;
 import org.apache.cassandra.thrift.ColumnOrSuperColumn;
 import org.apache.cassandra.thrift.ColumnParent;
@@ -32,7 +31,6 @@ import org.apache.cassandra.thrift.ColumnPath;
 import org.apache.cassandra.thrift.Compression;
 import org.apache.cassandra.thrift.ConsistencyLevel;
 import org.apache.cassandra.thrift.CounterColumn;
-import org.apache.cassandra.thrift.CqlPreparedResult;
 import org.apache.cassandra.thrift.CqlResult;
 import org.apache.cassandra.thrift.IndexClause;
 import org.apache.cassandra.thrift.InvalidRequestException;
@@ -61,132 +59,92 @@ public class CassandraIfaceWrapper implements Cassandra.Iface {
         this.iface = iface;
     }
 
-    public void truncate(String cfname) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
-        iface.truncate(cfname);
+    public void truncate(String string) throws InvalidRequestException, UnavailableException, TException {
+        iface.truncate(string);
     }
 
-    public ByteBuffer trace_next_query() throws TException {
-        return iface.trace_next_query();
+    public String system_update_keyspace(KsDef ksdef) throws InvalidRequestException, SchemaDisagreementException, TException {
+        return iface.system_update_keyspace(ksdef);
     }
 
-    public String system_update_keyspace(KsDef ks_def) throws InvalidRequestException, SchemaDisagreementException, TException {
-        return iface.system_update_keyspace(ks_def);
+    public String system_update_column_family(CfDef cfdef) throws InvalidRequestException, SchemaDisagreementException, TException {
+        return iface.system_update_column_family(cfdef);
     }
 
-    public String system_update_column_family(CfDef cf_def) throws InvalidRequestException, SchemaDisagreementException, TException {
-        return iface.system_update_column_family(cf_def);
+    public String system_drop_keyspace(String string) throws InvalidRequestException, SchemaDisagreementException, TException {
+        return iface.system_drop_keyspace(string);
     }
 
-    public String system_drop_keyspace(String keyspace) throws InvalidRequestException, SchemaDisagreementException, TException {
-        return iface.system_drop_keyspace(keyspace);
+    public String system_drop_column_family(String string) throws InvalidRequestException, SchemaDisagreementException, TException {
+        return iface.system_drop_column_family(string);
     }
 
-    public String system_drop_column_family(String column_family) throws InvalidRequestException, SchemaDisagreementException, TException {
-        return iface.system_drop_column_family(column_family);
+    public String system_add_keyspace(KsDef ksdef) throws InvalidRequestException, SchemaDisagreementException, TException {
+        return iface.system_add_keyspace(ksdef);
     }
 
-    public String system_add_keyspace(KsDef ks_def) throws InvalidRequestException, SchemaDisagreementException, TException {
-        return iface.system_add_keyspace(ks_def);
+    public String system_add_column_family(CfDef cfdef) throws InvalidRequestException, SchemaDisagreementException, TException {
+        return iface.system_add_column_family(cfdef);
     }
 
-    public String system_add_column_family(CfDef cf_def) throws InvalidRequestException, SchemaDisagreementException, TException {
-        return iface.system_add_column_family(cf_def);
+    public void set_keyspace(String string) throws InvalidRequestException, TException {
+        iface.set_keyspace(string);
     }
 
-    public void set_keyspace(String keyspace) throws InvalidRequestException, TException {
-        iface.set_keyspace(keyspace);
+    public void remove_counter(ByteBuffer bb, ColumnPath cp, ConsistencyLevel cl) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
+        iface.remove_counter(bb, cp, cl);
     }
 
-    public void set_cql_version(String version) throws InvalidRequestException, TException {
-        iface.set_cql_version(version);
+    public void remove(ByteBuffer bb, ColumnPath cp, long l, ConsistencyLevel cl) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
+        iface.remove(bb, cp, l, cl);
     }
 
-    public void remove_counter(ByteBuffer key, ColumnPath path, ConsistencyLevel consistency_level) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
-        iface.remove_counter(key, path, consistency_level);
+    public Map<ByteBuffer, List<ColumnOrSuperColumn>> multiget_slice(List<ByteBuffer> list, ColumnParent cp, SlicePredicate sp, ConsistencyLevel cl) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
+        return iface.multiget_slice(list, cp, sp, cl);
     }
 
-    public void remove(ByteBuffer key, ColumnPath column_path, long timestamp, ConsistencyLevel consistency_level) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
-        iface.remove(key, column_path, timestamp, consistency_level);
+    public Map<ByteBuffer, Integer> multiget_count(List<ByteBuffer> list, ColumnParent cp, SlicePredicate sp, ConsistencyLevel cl) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
+        return iface.multiget_count(list, cp, sp, cl);
     }
 
-    public CqlPreparedResult prepare_cql_query(ByteBuffer query, Compression compression) throws InvalidRequestException, TException {
-        return iface.prepare_cql_query(query, compression);
+    public void login(AuthenticationRequest ar) throws AuthenticationException, AuthorizationException, TException {
+        iface.login(ar);
     }
 
-    public CqlPreparedResult prepare_cql3_query(ByteBuffer query, Compression compression) throws InvalidRequestException, TException {
-        return iface.prepare_cql3_query(query, compression);
+    public void insert(ByteBuffer bb, ColumnParent cp, Column column, ConsistencyLevel cl) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
+        iface.insert(bb, cp, column, cl);
     }
 
-    public Map<ByteBuffer, List<ColumnOrSuperColumn>> multiget_slice(List<ByteBuffer> keys, ColumnParent column_parent, SlicePredicate predicate, ConsistencyLevel consistency_level) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
-        return iface.multiget_slice(keys, column_parent, predicate, consistency_level);
+    public List<ColumnOrSuperColumn> get_slice(ByteBuffer bb, ColumnParent cp, SlicePredicate sp, ConsistencyLevel cl) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
+        return iface.get_slice(bb, cp, sp, cl);
     }
 
-    public Map<ByteBuffer, Integer> multiget_count(List<ByteBuffer> keys, ColumnParent column_parent, SlicePredicate predicate, ConsistencyLevel consistency_level) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
-        return iface.multiget_count(keys, column_parent, predicate, consistency_level);
+    public List<KeySlice> get_range_slices(ColumnParent cp, SlicePredicate sp, KeyRange kr, ConsistencyLevel cl) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
+        return iface.get_range_slices(cp, sp, kr, cl);
     }
 
-    public void login(AuthenticationRequest auth_request) throws AuthenticationException, AuthorizationException, TException {
-        iface.login(auth_request);
+    public List<KeySlice> get_indexed_slices(ColumnParent cp, IndexClause ic, SlicePredicate sp, ConsistencyLevel cl) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
+        return iface.get_indexed_slices(cp, ic, sp, cl);
     }
 
-    public void insert(ByteBuffer key, ColumnParent column_parent, Column column, ConsistencyLevel consistency_level) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
-        iface.insert(key, column_parent, column, consistency_level);
+    public int get_count(ByteBuffer bb, ColumnParent cp, SlicePredicate sp, ConsistencyLevel cl) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
+        return iface.get_count(bb, cp, sp, cl);
     }
 
-    public List<ColumnOrSuperColumn> get_slice(ByteBuffer key, ColumnParent column_parent, SlicePredicate predicate, ConsistencyLevel consistency_level) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
-        return iface.get_slice(key, column_parent, predicate, consistency_level);
+    public ColumnOrSuperColumn get(ByteBuffer bb, ColumnPath cp, ConsistencyLevel cl) throws InvalidRequestException, NotFoundException, UnavailableException, TimedOutException, TException {
+        return iface.get(bb, cp, cl);
     }
 
-    public List<KeySlice> get_range_slices(ColumnParent column_parent, SlicePredicate predicate, KeyRange range, ConsistencyLevel consistency_level) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
-        return iface.get_range_slices(column_parent, predicate, range, consistency_level);
-    }
-
-    public List<KeySlice> get_paged_slice(String column_family, KeyRange range, ByteBuffer start_column, ConsistencyLevel consistency_level) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
-        return iface.get_paged_slice(column_family, range, start_column, consistency_level);
-    }
-
-    public List<KeySlice> get_indexed_slices(ColumnParent column_parent, IndexClause index_clause, SlicePredicate column_predicate, ConsistencyLevel consistency_level) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
-        return iface.get_indexed_slices(column_parent, index_clause, column_predicate, consistency_level);
-    }
-
-    public int get_count(ByteBuffer key, ColumnParent column_parent, SlicePredicate predicate, ConsistencyLevel consistency_level) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
-        return iface.get_count(key, column_parent, predicate, consistency_level);
-    }
-
-    public ColumnOrSuperColumn get(ByteBuffer key, ColumnPath column_path, ConsistencyLevel consistency_level) throws InvalidRequestException, NotFoundException, UnavailableException, TimedOutException, TException {
-        return iface.get(key, column_path, consistency_level);
-    }
-
-    public CqlResult execute_prepared_cql_query(int itemId, List<ByteBuffer> values) throws InvalidRequestException, UnavailableException, TimedOutException, SchemaDisagreementException, TException {
-        return iface.execute_prepared_cql_query(itemId, values);
-    }
-
-    public CqlResult execute_prepared_cql3_query(int itemId, List<ByteBuffer> values, ConsistencyLevel consistency) throws InvalidRequestException, UnavailableException, TimedOutException, SchemaDisagreementException, TException {
-        return iface.execute_prepared_cql3_query(itemId, values, consistency);
-    }
-
-    public CqlResult execute_cql_query(ByteBuffer query, Compression compression) throws InvalidRequestException, UnavailableException, TimedOutException, SchemaDisagreementException, TException {
-        return iface.execute_cql_query(query, compression);
-    }
-
-    public CqlResult execute_cql3_query(ByteBuffer query, Compression compression, ConsistencyLevel consistency) throws InvalidRequestException, UnavailableException, TimedOutException, SchemaDisagreementException, TException {
-        return iface.execute_cql3_query(query, compression, consistency);
+    public CqlResult execute_cql_query(ByteBuffer bb, Compression cmprsn) throws InvalidRequestException, UnavailableException, TimedOutException, SchemaDisagreementException, TException {
+        return iface.execute_cql_query(bb, cmprsn);
     }
 
     public String describe_version() throws TException {
         return iface.describe_version();
     }
 
-    public Map<String, String> describe_token_map() throws InvalidRequestException, TException {
-        return iface.describe_token_map();
-    }
-
-    public List<CfSplit> describe_splits_ex(String cfName, String start_token, String end_token, int keys_per_split) throws InvalidRequestException, TException {
-        return iface.describe_splits_ex(cfName, start_token, end_token, keys_per_split);
-    }
-
-    public List<String> describe_splits(String cfName, String start_token, String end_token, int keys_per_split) throws InvalidRequestException, TException {
-        return iface.describe_splits(cfName, start_token, end_token, keys_per_split);
+    public List<String> describe_splits(String string, String string1, String string2, int i) throws InvalidRequestException, TException {
+        return iface.describe_splits(string, string1, string2, i);
     }
 
     public String describe_snitch() throws TException {
@@ -197,8 +155,8 @@ public class CassandraIfaceWrapper implements Cassandra.Iface {
         return iface.describe_schema_versions();
     }
 
-    public List<TokenRange> describe_ring(String keyspace) throws InvalidRequestException, TException {
-        return iface.describe_ring(keyspace);
+    public List<TokenRange> describe_ring(String string) throws InvalidRequestException, TException {
+        return iface.describe_ring(string);
     }
 
     public String describe_partitioner() throws TException {
@@ -209,24 +167,20 @@ public class CassandraIfaceWrapper implements Cassandra.Iface {
         return iface.describe_keyspaces();
     }
 
-    public KsDef describe_keyspace(String keyspace) throws NotFoundException, InvalidRequestException, TException {
-        return iface.describe_keyspace(keyspace);
+    public KsDef describe_keyspace(String string) throws NotFoundException, InvalidRequestException, TException {
+        return iface.describe_keyspace(string);
     }
 
     public String describe_cluster_name() throws TException {
         return iface.describe_cluster_name();
     }
 
-    public void batch_mutate(Map<ByteBuffer, Map<String, List<Mutation>>> mutation_map, ConsistencyLevel consistency_level) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
-        iface.batch_mutate(mutation_map, consistency_level);
+    public void batch_mutate(Map<ByteBuffer, Map<String, List<Mutation>>> map, ConsistencyLevel cl) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
+        iface.batch_mutate(map, cl);
     }
 
-    public void atomic_batch_mutate(Map<ByteBuffer, Map<String, List<Mutation>>> mutation_map, ConsistencyLevel consistency_level) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
-        iface.atomic_batch_mutate(mutation_map, consistency_level);
-    }
-
-    public void add(ByteBuffer key, ColumnParent column_parent, CounterColumn column, ConsistencyLevel consistency_level) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
-        iface.add(key, column_parent, column, consistency_level);
+    public void add(ByteBuffer bb, ColumnParent cp, CounterColumn cc, ConsistencyLevel cl) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
+        iface.add(bb, cp, cc, cl);
     }
 
     public void setIface(Cassandra.Iface iface) {

@@ -46,7 +46,7 @@
         <dependency>
             <groupId>com.googlecode.cassandra-jca</groupId>
             <artifactId>cassandra-jca-rar</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>${cassandra.jca.rar.version}</version>
             <type>rar</type>
         </dependency>
         <dependency>
