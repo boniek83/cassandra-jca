@@ -47,7 +47,6 @@
         <dependency>
             <groupId>com.googlecode.cassandra-jca</groupId>
             <artifactId>cassandra-jca-impl</artifactId>
-            <version>${cassandra.jca.impl.version}</version>    
         </dependency>
     </dependencies>
     
@@ -56,11 +55,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-rar-plugin</artifactId>
-                <!--
-                <configuration>
-                    <finalName>${artifactId}-${version}-ra</finalName>
-                </configuration>    
-                -->
             </plugin>
         </plugins>
     </build>
