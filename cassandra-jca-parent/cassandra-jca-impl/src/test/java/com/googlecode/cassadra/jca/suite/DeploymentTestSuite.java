@@ -16,7 +16,7 @@
  */
 package com.googlecode.cassadra.jca.suite;
 
-import org.apache.cassandra.thrift.CassandraDaemon;
+import org.apache.cassandra.service.CassandraDaemon;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
