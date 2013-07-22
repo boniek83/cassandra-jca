@@ -12,11 +12,15 @@
     <artifactId>cassandra-jca-parent</artifactId>
     <packaging>pom</packaging>
     <name>cassandra-jca-parent</name>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.12</version>
     <description></description>
     <url>http://code.google.com/p/cassandra-jca/source/browse/</url>
     
     <properties>
+        <cassandra.version>1.0.12</cassandra.version>
+        <cassandra.jca.api.version>1.0.12</cassandra.jca.api.version>
+        <cassandra.jca.impl.version>1.0.12</cassandra.jca.impl.version>
+        <cassandra.jca.rar.version>1.0.12</cassandra.jca.rar.version>
     </properties>
 
     <licenses>
@@ -44,6 +48,39 @@
         <module>cassandra-jca-impl</module>
         <module>cassandra-jca-rar</module>
     </modules>
+    
+    
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.googlecode.cassandra-jca</groupId>
+                <artifactId>cassandra-jca-api</artifactId>
+                <version>${cassandra.jca.api.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.googlecode.cassandra-jca</groupId>
+                <artifactId>cassandra-jca-impl</artifactId>
+                <version>${cassandra.jca.impl.version}</version>
+            </dependency>
+            
+            <dependency>
+                <groupId>org.apache.cassandra</groupId>
+                <artifactId>cassandra-thrift</artifactId>
+                <version>${cassandra.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.cassandra</groupId>
+                <artifactId>cassandra-clientutil</artifactId>
+                <version>${cassandra.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.cassandra</groupId>
+                <artifactId>cassandra-all</artifactId>
+                <version>${cassandra.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    
     
     <dependencies>
         <dependency>
