@@ -47,7 +47,6 @@
         <dependency>
             <groupId>com.googlecode.cassandra-jca</groupId>
             <artifactId>cassandra-jca-api</artifactId>
-            <version>${cassandra.jca.api.version}</version>
         </dependency>
         
         <dependency>

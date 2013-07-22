@@ -38,6 +38,29 @@
         </developer>
     </developers>
 
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.googlecode.cassandra-jca</groupId>
+                <artifactId>cassandra-jca-api</artifactId>
+                <version>${cassandra.jca.api.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.googlecode.cassandra-jca</groupId>
+                <artifactId>cassandra-jca-impl</artifactId>
+                <version>${cassandra.jca.impl.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.googlecode.cassandra-jca</groupId>
+                <artifactId>cassandra-jca-rar</artifactId>
+                <version>${cassandra.jca.rar.version}</version>
+                <type>rar</type>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    
+
     <modules>
         <module>cassandra-jca-jboss</module>
         <module>cassandra-jca-jboss-as-7</module>
