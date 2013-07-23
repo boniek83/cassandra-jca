@@ -24,6 +24,7 @@ import org.apache.cassandra.thrift.AuthenticationRequest;
 import org.apache.cassandra.thrift.AuthorizationException;
 import org.apache.cassandra.thrift.Cassandra;
 import org.apache.cassandra.thrift.CfDef;
+import org.apache.cassandra.thrift.CfSplit;
 import org.apache.cassandra.thrift.Column;
 import org.apache.cassandra.thrift.ColumnOrSuperColumn;
 import org.apache.cassandra.thrift.ColumnParent;
@@ -31,6 +32,7 @@ import org.apache.cassandra.thrift.ColumnPath;
 import org.apache.cassandra.thrift.Compression;
 import org.apache.cassandra.thrift.ConsistencyLevel;
 import org.apache.cassandra.thrift.CounterColumn;
+import org.apache.cassandra.thrift.CqlPreparedResult;
 import org.apache.cassandra.thrift.CqlResult;
 import org.apache.cassandra.thrift.IndexClause;
 import org.apache.cassandra.thrift.InvalidRequestException;
@@ -44,7 +46,6 @@ import org.apache.cassandra.thrift.SlicePredicate;
 import org.apache.cassandra.thrift.TimedOutException;
 import org.apache.cassandra.thrift.TokenRange;
 import org.apache.cassandra.thrift.UnavailableException;
-import org.apache.thrift.TException;
 
 /**
  * 
@@ -59,127 +60,151 @@ public class CassandraIfaceWrapper implements Cassandra.Iface {
         this.iface = iface;
     }
 
-    public void truncate(String string) throws InvalidRequestException, UnavailableException, TException {
+    public void truncate(String string) throws InvalidRequestException, UnavailableException, TimedOutException, org.apache.thrift.TException {
         iface.truncate(string);
     }
 
-    public String system_update_keyspace(KsDef ksdef) throws InvalidRequestException, SchemaDisagreementException, TException {
+    public String system_update_keyspace(KsDef ksdef) throws InvalidRequestException, SchemaDisagreementException, org.apache.thrift.TException {
         return iface.system_update_keyspace(ksdef);
     }
 
-    public String system_update_column_family(CfDef cfdef) throws InvalidRequestException, SchemaDisagreementException, TException {
+    public String system_update_column_family(CfDef cfdef) throws InvalidRequestException, SchemaDisagreementException, org.apache.thrift.TException {
         return iface.system_update_column_family(cfdef);
     }
 
-    public String system_drop_keyspace(String string) throws InvalidRequestException, SchemaDisagreementException, TException {
+    public String system_drop_keyspace(String string) throws InvalidRequestException, SchemaDisagreementException, org.apache.thrift.TException {
         return iface.system_drop_keyspace(string);
     }
 
-    public String system_drop_column_family(String string) throws InvalidRequestException, SchemaDisagreementException, TException {
+    public String system_drop_column_family(String string) throws InvalidRequestException, SchemaDisagreementException, org.apache.thrift.TException {
         return iface.system_drop_column_family(string);
     }
 
-    public String system_add_keyspace(KsDef ksdef) throws InvalidRequestException, SchemaDisagreementException, TException {
+    public String system_add_keyspace(KsDef ksdef) throws InvalidRequestException, SchemaDisagreementException, org.apache.thrift.TException {
         return iface.system_add_keyspace(ksdef);
     }
 
-    public String system_add_column_family(CfDef cfdef) throws InvalidRequestException, SchemaDisagreementException, TException {
+    public String system_add_column_family(CfDef cfdef) throws InvalidRequestException, SchemaDisagreementException, org.apache.thrift.TException {
         return iface.system_add_column_family(cfdef);
     }
 
-    public void set_keyspace(String string) throws InvalidRequestException, TException {
+    public void set_keyspace(String string) throws InvalidRequestException, org.apache.thrift.TException {
         iface.set_keyspace(string);
     }
 
-    public void remove_counter(ByteBuffer bb, ColumnPath cp, ConsistencyLevel cl) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
+    public void set_cql_version(String string) throws InvalidRequestException, org.apache.thrift.TException {
+        iface.set_cql_version(string);
+    }
+
+    public void remove_counter(ByteBuffer bb, ColumnPath cp, ConsistencyLevel cl) throws InvalidRequestException, UnavailableException, TimedOutException, org.apache.thrift.TException {
         iface.remove_counter(bb, cp, cl);
     }
 
-    public void remove(ByteBuffer bb, ColumnPath cp, long l, ConsistencyLevel cl) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
+    public void remove(ByteBuffer bb, ColumnPath cp, long l, ConsistencyLevel cl) throws InvalidRequestException, UnavailableException, TimedOutException, org.apache.thrift.TException {
         iface.remove(bb, cp, l, cl);
     }
 
-    public Map<ByteBuffer, List<ColumnOrSuperColumn>> multiget_slice(List<ByteBuffer> list, ColumnParent cp, SlicePredicate sp, ConsistencyLevel cl) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
+    public CqlPreparedResult prepare_cql_query(ByteBuffer bb, Compression cmprsn) throws InvalidRequestException, org.apache.thrift.TException {
+        return iface.prepare_cql_query(bb, cmprsn);
+    }
+
+    public Map<ByteBuffer, List<ColumnOrSuperColumn>> multiget_slice(List<ByteBuffer> list, ColumnParent cp, SlicePredicate sp, ConsistencyLevel cl) throws InvalidRequestException, UnavailableException, TimedOutException, org.apache.thrift.TException {
         return iface.multiget_slice(list, cp, sp, cl);
     }
 
-    public Map<ByteBuffer, Integer> multiget_count(List<ByteBuffer> list, ColumnParent cp, SlicePredicate sp, ConsistencyLevel cl) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
+    public Map<ByteBuffer, Integer> multiget_count(List<ByteBuffer> list, ColumnParent cp, SlicePredicate sp, ConsistencyLevel cl) throws InvalidRequestException, UnavailableException, TimedOutException, org.apache.thrift.TException {
         return iface.multiget_count(list, cp, sp, cl);
     }
 
-    public void login(AuthenticationRequest ar) throws AuthenticationException, AuthorizationException, TException {
+    public void login(AuthenticationRequest ar) throws AuthenticationException, AuthorizationException, org.apache.thrift.TException {
         iface.login(ar);
     }
 
-    public void insert(ByteBuffer bb, ColumnParent cp, Column column, ConsistencyLevel cl) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
+    public void insert(ByteBuffer bb, ColumnParent cp, Column column, ConsistencyLevel cl) throws InvalidRequestException, UnavailableException, TimedOutException, org.apache.thrift.TException {
         iface.insert(bb, cp, column, cl);
     }
 
-    public List<ColumnOrSuperColumn> get_slice(ByteBuffer bb, ColumnParent cp, SlicePredicate sp, ConsistencyLevel cl) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
+    public List<ColumnOrSuperColumn> get_slice(ByteBuffer bb, ColumnParent cp, SlicePredicate sp, ConsistencyLevel cl) throws InvalidRequestException, UnavailableException, TimedOutException, org.apache.thrift.TException {
         return iface.get_slice(bb, cp, sp, cl);
     }
 
-    public List<KeySlice> get_range_slices(ColumnParent cp, SlicePredicate sp, KeyRange kr, ConsistencyLevel cl) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
+    public List<KeySlice> get_range_slices(ColumnParent cp, SlicePredicate sp, KeyRange kr, ConsistencyLevel cl) throws InvalidRequestException, UnavailableException, TimedOutException, org.apache.thrift.TException {
         return iface.get_range_slices(cp, sp, kr, cl);
     }
 
-    public List<KeySlice> get_indexed_slices(ColumnParent cp, IndexClause ic, SlicePredicate sp, ConsistencyLevel cl) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
+    public List<KeySlice> get_paged_slice(String string, KeyRange kr, ByteBuffer bb, ConsistencyLevel cl) throws InvalidRequestException, UnavailableException, TimedOutException, org.apache.thrift.TException {
+        return iface.get_paged_slice(string, kr, bb, cl);
+    }
+
+    public List<KeySlice> get_indexed_slices(ColumnParent cp, IndexClause ic, SlicePredicate sp, ConsistencyLevel cl) throws InvalidRequestException, UnavailableException, TimedOutException, org.apache.thrift.TException {
         return iface.get_indexed_slices(cp, ic, sp, cl);
     }
 
-    public int get_count(ByteBuffer bb, ColumnParent cp, SlicePredicate sp, ConsistencyLevel cl) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
+    public int get_count(ByteBuffer bb, ColumnParent cp, SlicePredicate sp, ConsistencyLevel cl) throws InvalidRequestException, UnavailableException, TimedOutException, org.apache.thrift.TException {
         return iface.get_count(bb, cp, sp, cl);
     }
 
-    public ColumnOrSuperColumn get(ByteBuffer bb, ColumnPath cp, ConsistencyLevel cl) throws InvalidRequestException, NotFoundException, UnavailableException, TimedOutException, TException {
+    public ColumnOrSuperColumn get(ByteBuffer bb, ColumnPath cp, ConsistencyLevel cl) throws InvalidRequestException, NotFoundException, UnavailableException, TimedOutException, org.apache.thrift.TException {
         return iface.get(bb, cp, cl);
     }
 
-    public CqlResult execute_cql_query(ByteBuffer bb, Compression cmprsn) throws InvalidRequestException, UnavailableException, TimedOutException, SchemaDisagreementException, TException {
+    public CqlResult execute_prepared_cql_query(int i, List<ByteBuffer> list) throws InvalidRequestException, UnavailableException, TimedOutException, SchemaDisagreementException, org.apache.thrift.TException {
+        return iface.execute_prepared_cql_query(i, list);
+    }
+
+    public CqlResult execute_cql_query(ByteBuffer bb, Compression cmprsn) throws InvalidRequestException, UnavailableException, TimedOutException, SchemaDisagreementException, org.apache.thrift.TException {
         return iface.execute_cql_query(bb, cmprsn);
     }
 
-    public String describe_version() throws TException {
+    public String describe_version() throws org.apache.thrift.TException {
         return iface.describe_version();
     }
 
-    public List<String> describe_splits(String string, String string1, String string2, int i) throws InvalidRequestException, TException {
+    public Map<String, String> describe_token_map() throws InvalidRequestException, org.apache.thrift.TException {
+        return iface.describe_token_map();
+    }
+
+    public List<CfSplit> describe_splits_ex(String string, String string1, String string2, int i) throws InvalidRequestException, org.apache.thrift.TException {
+        return iface.describe_splits_ex(string, string1, string2, i);
+    }
+
+    public List<String> describe_splits(String string, String string1, String string2, int i) throws InvalidRequestException, org.apache.thrift.TException {
         return iface.describe_splits(string, string1, string2, i);
     }
 
-    public String describe_snitch() throws TException {
+    public String describe_snitch() throws org.apache.thrift.TException {
         return iface.describe_snitch();
     }
 
-    public Map<String, List<String>> describe_schema_versions() throws InvalidRequestException, TException {
+    public Map<String, List<String>> describe_schema_versions() throws InvalidRequestException, org.apache.thrift.TException {
         return iface.describe_schema_versions();
     }
 
-    public List<TokenRange> describe_ring(String string) throws InvalidRequestException, TException {
+    public List<TokenRange> describe_ring(String string) throws InvalidRequestException, org.apache.thrift.TException {
         return iface.describe_ring(string);
     }
 
-    public String describe_partitioner() throws TException {
+    public String describe_partitioner() throws org.apache.thrift.TException {
         return iface.describe_partitioner();
     }
 
-    public List<KsDef> describe_keyspaces() throws InvalidRequestException, TException {
+    public List<KsDef> describe_keyspaces() throws InvalidRequestException, org.apache.thrift.TException {
         return iface.describe_keyspaces();
     }
 
-    public KsDef describe_keyspace(String string) throws NotFoundException, InvalidRequestException, TException {
+    public KsDef describe_keyspace(String string) throws NotFoundException, InvalidRequestException, org.apache.thrift.TException {
         return iface.describe_keyspace(string);
     }
 
-    public String describe_cluster_name() throws TException {
+    public String describe_cluster_name() throws org.apache.thrift.TException {
         return iface.describe_cluster_name();
     }
 
-    public void batch_mutate(Map<ByteBuffer, Map<String, List<Mutation>>> map, ConsistencyLevel cl) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
+    public void batch_mutate(Map<ByteBuffer, Map<String, List<Mutation>>> map, ConsistencyLevel cl) throws InvalidRequestException, UnavailableException, TimedOutException, org.apache.thrift.TException {
         iface.batch_mutate(map, cl);
     }
 
-    public void add(ByteBuffer bb, ColumnParent cp, CounterColumn cc, ConsistencyLevel cl) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
+    public void add(ByteBuffer bb, ColumnParent cp, CounterColumn cc, ConsistencyLevel cl) throws InvalidRequestException, UnavailableException, TimedOutException, org.apache.thrift.TException {
         iface.add(bb, cp, cc, cl);
     }
 

@@ -5,14 +5,14 @@
     <parent>
         <groupId>com.googlecode.cassandra-jca</groupId>
         <artifactId>cassandra-jca-parent</artifactId>
-        <version>1.0.13-SNAPSHOT</version>
+        <version>1.1.12-SNAPSHOT</version>
     </parent>
     
     <groupId>com.googlecode.cassandra-jca</groupId>
     <artifactId>cassandra-jca-impl</artifactId>
     <packaging>jar</packaging>
     <name>cassandra-jca-impl</name>
-    <version>1.0.13-SNAPSHOT</version>
+    <version>${cassandra.jca.impl.version}</version>
     <description />
     <url>http://code.google.com/p/cassandra-jca/source/browse/</url>
 
