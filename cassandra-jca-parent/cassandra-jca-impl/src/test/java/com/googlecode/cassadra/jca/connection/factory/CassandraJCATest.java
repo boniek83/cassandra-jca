@@ -41,6 +41,8 @@ import com.googlecode.cassadra.jca.connection.ClosedCassandraIface;
 import com.googlecode.cassadra.jca.connection.exception.ClosedCassandraIfaceException;
 import com.googlecode.cassadra.jca.managed.connection.CassandraManagedConnection;
 import com.googlecode.cassadra.jca.ra.CassandraResourceAdapter;
+import org.jboss.shrinkwrap.api.asset.EmptyAsset;
+import org.jboss.shrinkwrap.impl.base.asset.AssetUtil;
 
 /**
  * 
@@ -66,6 +68,7 @@ public class CassandraJCATest {
         ResourceAdapterArchive rar =
                 ShrinkWrap.create(ResourceAdapterArchive.class, deploymentName + ".rar");
         rar.addAsLibrary(jar);
+        rar.addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
         rar.addAsManifestResource("META-INF/ironjacamar.xml", "ironjacamar.xml");
         rar.addAsManifestResource("META-INF/ra.xml", "ra.xml");
 

@@ -31,7 +31,7 @@ import com.googlecode.cassadra.jca.connection.factory.CassandraJCATest;
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-    CassandraJCATest.class
+//    CassandraJCATest.class
 })
 public class DeploymentTestSuite {
 
