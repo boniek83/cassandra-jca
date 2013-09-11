@@ -5,7 +5,7 @@
     <parent>
         <groupId>com.googlecode.cassandra-jca</groupId>
         <artifactId>cassandra-jca-parent</artifactId>
-        <version>1.2.5</version>
+        <version>1.2.5-SNAPSHOT</version>
     </parent>
     
     <groupId>com.googlecode.cassandra-jca</groupId>

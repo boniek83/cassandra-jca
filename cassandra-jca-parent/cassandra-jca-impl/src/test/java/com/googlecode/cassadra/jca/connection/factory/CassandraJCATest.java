@@ -82,6 +82,7 @@ public class CassandraJCATest {
 
     @Test
     public void testLookupConnectionFactory() throws Throwable {
+        System.out.println("testLookupConnectionFactory");
         assertNotNull(cf);
 
         CassandraConnection c = cf.getConnection();
