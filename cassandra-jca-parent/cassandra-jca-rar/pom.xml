@@ -12,8 +12,8 @@
     <artifactId>cassandra-jca-rar</artifactId>
     <packaging>rar</packaging>
     <name>cassandra-jca-rar</name>
-    <version>${cassandra.jca.rar.version}</version>
-    <description></description>
+    <version>1.2.5</version>
+    <description />
     <url>http://code.google.com/p/cassandra-jca/source/browse/</url>
 
     

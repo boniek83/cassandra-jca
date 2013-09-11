@@ -12,8 +12,8 @@
     <artifactId>cassandra-jca-impl</artifactId>
     <packaging>jar</packaging>
     <name>cassandra-jca-impl</name>
-    <version>${cassandra.jca.impl.version}</version>
-    <description></description>
+    <version>1.2.5-SNAPSHOT</version>
+    <description />
     <url>http://code.google.com/p/cassandra-jca/source/browse/</url>
 
     
