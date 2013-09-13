@@ -33,7 +33,7 @@
     <scm>
         <connection>scm:git:https://code.google.com/p/cassandra-jca/</connection>
         <developerConnection>scm:git:https://code.google.com/p/cassandra-jca/</developerConnection>
-        <url>http://code.google.com/p/cassandra-jca/source/browse</url>
+        <url>scm:git:https://code.google.com/p/cassandra-jca/</url>
     </scm>
     <developers>
         <developer>
