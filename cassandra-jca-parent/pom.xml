@@ -20,7 +20,7 @@
         <cassandra.version>1.2.6</cassandra.version>
         <cassandra.jca.api.version>1.2.6</cassandra.jca.api.version>
         <cassandra.jca.impl.version>1.2.6</cassandra.jca.impl.version>
-        <cassandra.jca.rar.version>1.2.6-SNAPSHOT</cassandra.jca.rar.version>
+        <cassandra.jca.rar.version>1.2.6</cassandra.jca.rar.version>
     </properties>
 
     <licenses>
