@@ -16,6 +16,7 @@
  */
 package com.googlecode.cassadra.jca.connection;
 
+
 import java.nio.ByteBuffer;
 import java.util.List;
 import java.util.Map;
@@ -47,8 +48,10 @@ import org.apache.cassandra.thrift.SlicePredicate;
 import org.apache.cassandra.thrift.TimedOutException;
 import org.apache.cassandra.thrift.TokenRange;
 import org.apache.cassandra.thrift.UnavailableException;
+import org.apache.thrift.TException;
 
 import com.googlecode.cassadra.jca.connection.exception.ClosedCassandraIfaceException;
+
 
 /**
  * 
@@ -57,151 +60,171 @@ import com.googlecode.cassadra.jca.connection.exception.ClosedCassandraIfaceExce
  */
 public class ClosedCassandraIface implements Cassandra.Iface {
 
-    public void login(AuthenticationRequest ar) throws AuthenticationException, AuthorizationException, org.apache.thrift.TException {
+    public void login(AuthenticationRequest auth_request) throws AuthenticationException, AuthorizationException, TException {
         throw new ClosedCassandraIfaceException("Connection has closed.");
     }
 
-    public void set_keyspace(String string) throws InvalidRequestException, org.apache.thrift.TException {
+    public void set_keyspace(String keyspace) throws InvalidRequestException, TException {
         throw new ClosedCassandraIfaceException("Connection has closed.");
     }
 
-    public ColumnOrSuperColumn get(ByteBuffer bb, ColumnPath cp, ConsistencyLevel cl) throws InvalidRequestException, NotFoundException, UnavailableException, TimedOutException, org.apache.thrift.TException {
+    public ColumnOrSuperColumn get(ByteBuffer key, ColumnPath column_path, ConsistencyLevel consistency_level) throws InvalidRequestException, NotFoundException, UnavailableException, TimedOutException, TException {
         throw new ClosedCassandraIfaceException("Connection has closed.");
     }
 
-    public List<ColumnOrSuperColumn> get_slice(ByteBuffer bb, ColumnParent cp, SlicePredicate sp, ConsistencyLevel cl) throws InvalidRequestException, UnavailableException, TimedOutException, org.apache.thrift.TException {
+    public List<ColumnOrSuperColumn> get_slice(ByteBuffer key, ColumnParent column_parent, SlicePredicate predicate, ConsistencyLevel consistency_level) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
         throw new ClosedCassandraIfaceException("Connection has closed.");
     }
 
-    public int get_count(ByteBuffer bb, ColumnParent cp, SlicePredicate sp, ConsistencyLevel cl) throws InvalidRequestException, UnavailableException, TimedOutException, org.apache.thrift.TException {
+    public int get_count(ByteBuffer key, ColumnParent column_parent, SlicePredicate predicate, ConsistencyLevel consistency_level) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
         throw new ClosedCassandraIfaceException("Connection has closed.");
     }
 
-    public Map<ByteBuffer, List<ColumnOrSuperColumn>> multiget_slice(List<ByteBuffer> list, ColumnParent cp, SlicePredicate sp, ConsistencyLevel cl) throws InvalidRequestException, UnavailableException, TimedOutException, org.apache.thrift.TException {
+    public Map<ByteBuffer, List<ColumnOrSuperColumn>> multiget_slice(List<ByteBuffer> keys, ColumnParent column_parent, SlicePredicate predicate, ConsistencyLevel consistency_level) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
         throw new ClosedCassandraIfaceException("Connection has closed.");
     }
 
-    public Map<ByteBuffer, Integer> multiget_count(List<ByteBuffer> list, ColumnParent cp, SlicePredicate sp, ConsistencyLevel cl) throws InvalidRequestException, UnavailableException, TimedOutException, org.apache.thrift.TException {
+    public Map<ByteBuffer, Integer> multiget_count(List<ByteBuffer> keys, ColumnParent column_parent, SlicePredicate predicate, ConsistencyLevel consistency_level) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
         throw new ClosedCassandraIfaceException("Connection has closed.");
     }
 
-    public List<KeySlice> get_range_slices(ColumnParent cp, SlicePredicate sp, KeyRange kr, ConsistencyLevel cl) throws InvalidRequestException, UnavailableException, TimedOutException, org.apache.thrift.TException {
+    public List<KeySlice> get_range_slices(ColumnParent column_parent, SlicePredicate predicate, KeyRange range, ConsistencyLevel consistency_level) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
         throw new ClosedCassandraIfaceException("Connection has closed.");
     }
 
-    public List<KeySlice> get_paged_slice(String string, KeyRange kr, ByteBuffer bb, ConsistencyLevel cl) throws InvalidRequestException, UnavailableException, TimedOutException, org.apache.thrift.TException {
+    public List<KeySlice> get_paged_slice(String column_family, KeyRange range, ByteBuffer start_column, ConsistencyLevel consistency_level) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
         throw new ClosedCassandraIfaceException("Connection has closed.");
     }
 
-    public List<KeySlice> get_indexed_slices(ColumnParent cp, IndexClause ic, SlicePredicate sp, ConsistencyLevel cl) throws InvalidRequestException, UnavailableException, TimedOutException, org.apache.thrift.TException {
+    public List<KeySlice> get_indexed_slices(ColumnParent column_parent, IndexClause index_clause, SlicePredicate column_predicate, ConsistencyLevel consistency_level) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
         throw new ClosedCassandraIfaceException("Connection has closed.");
     }
 
-    public void insert(ByteBuffer bb, ColumnParent cp, Column column, ConsistencyLevel cl) throws InvalidRequestException, UnavailableException, TimedOutException, org.apache.thrift.TException {
+    public void insert(ByteBuffer key, ColumnParent column_parent, Column column, ConsistencyLevel consistency_level) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
         throw new ClosedCassandraIfaceException("Connection has closed.");
     }
 
-    public void add(ByteBuffer bb, ColumnParent cp, CounterColumn cc, ConsistencyLevel cl) throws InvalidRequestException, UnavailableException, TimedOutException, org.apache.thrift.TException {
+    public void add(ByteBuffer key, ColumnParent column_parent, CounterColumn column, ConsistencyLevel consistency_level) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
         throw new ClosedCassandraIfaceException("Connection has closed.");
     }
 
-    public void remove(ByteBuffer bb, ColumnPath cp, long l, ConsistencyLevel cl) throws InvalidRequestException, UnavailableException, TimedOutException, org.apache.thrift.TException {
+    public void remove(ByteBuffer key, ColumnPath column_path, long timestamp, ConsistencyLevel consistency_level) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
         throw new ClosedCassandraIfaceException("Connection has closed.");
     }
 
-    public void remove_counter(ByteBuffer bb, ColumnPath cp, ConsistencyLevel cl) throws InvalidRequestException, UnavailableException, TimedOutException, org.apache.thrift.TException {
+    public void remove_counter(ByteBuffer key, ColumnPath path, ConsistencyLevel consistency_level) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
         throw new ClosedCassandraIfaceException("Connection has closed.");
     }
 
-    public void batch_mutate(Map<ByteBuffer, Map<String, List<Mutation>>> map, ConsistencyLevel cl) throws InvalidRequestException, UnavailableException, TimedOutException, org.apache.thrift.TException {
+    public void batch_mutate(Map<ByteBuffer, Map<String, List<Mutation>>> mutation_map, ConsistencyLevel consistency_level) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
         throw new ClosedCassandraIfaceException("Connection has closed.");
     }
 
-    public void truncate(String string) throws InvalidRequestException, UnavailableException, TimedOutException, org.apache.thrift.TException {
+    public void atomic_batch_mutate(Map<ByteBuffer, Map<String, List<Mutation>>> mutation_map, ConsistencyLevel consistency_level) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
         throw new ClosedCassandraIfaceException("Connection has closed.");
     }
 
-    public Map<String, List<String>> describe_schema_versions() throws InvalidRequestException, org.apache.thrift.TException {
+    public void truncate(String cfname) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
         throw new ClosedCassandraIfaceException("Connection has closed.");
     }
 
-    public List<KsDef> describe_keyspaces() throws InvalidRequestException, org.apache.thrift.TException {
+    public Map<String, List<String>> describe_schema_versions() throws InvalidRequestException, TException {
         throw new ClosedCassandraIfaceException("Connection has closed.");
     }
 
-    public String describe_cluster_name() throws org.apache.thrift.TException {
+    public List<KsDef> describe_keyspaces() throws InvalidRequestException, TException {
         throw new ClosedCassandraIfaceException("Connection has closed.");
     }
 
-    public String describe_version() throws org.apache.thrift.TException {
+    public String describe_cluster_name() throws TException {
         throw new ClosedCassandraIfaceException("Connection has closed.");
     }
 
-    public List<TokenRange> describe_ring(String string) throws InvalidRequestException, org.apache.thrift.TException {
+    public String describe_version() throws TException {
         throw new ClosedCassandraIfaceException("Connection has closed.");
     }
 
-    public Map<String, String> describe_token_map() throws InvalidRequestException, org.apache.thrift.TException {
+    public List<TokenRange> describe_ring(String keyspace) throws InvalidRequestException, TException {
         throw new ClosedCassandraIfaceException("Connection has closed.");
     }
 
-    public String describe_partitioner() throws org.apache.thrift.TException {
+    public Map<String, String> describe_token_map() throws InvalidRequestException, TException {
         throw new ClosedCassandraIfaceException("Connection has closed.");
     }
 
-    public String describe_snitch() throws org.apache.thrift.TException {
+    public String describe_partitioner() throws TException {
         throw new ClosedCassandraIfaceException("Connection has closed.");
     }
 
-    public KsDef describe_keyspace(String string) throws NotFoundException, InvalidRequestException, org.apache.thrift.TException {
+    public String describe_snitch() throws TException {
         throw new ClosedCassandraIfaceException("Connection has closed.");
     }
 
-    public List<String> describe_splits(String string, String string1, String string2, int i) throws InvalidRequestException, org.apache.thrift.TException {
+    public KsDef describe_keyspace(String keyspace) throws NotFoundException, InvalidRequestException, TException {
         throw new ClosedCassandraIfaceException("Connection has closed.");
     }
 
-    public List<CfSplit> describe_splits_ex(String string, String string1, String string2, int i) throws InvalidRequestException, org.apache.thrift.TException {
+    public List<String> describe_splits(String cfName, String start_token, String end_token, int keys_per_split) throws InvalidRequestException, TException {
         throw new ClosedCassandraIfaceException("Connection has closed.");
     }
 
-    public String system_add_column_family(CfDef cfdef) throws InvalidRequestException, SchemaDisagreementException, org.apache.thrift.TException {
+    public ByteBuffer trace_next_query() throws TException {
         throw new ClosedCassandraIfaceException("Connection has closed.");
     }
 
-    public String system_drop_column_family(String string) throws InvalidRequestException, SchemaDisagreementException, org.apache.thrift.TException {
+    public List<CfSplit> describe_splits_ex(String cfName, String start_token, String end_token, int keys_per_split) throws InvalidRequestException, TException {
         throw new ClosedCassandraIfaceException("Connection has closed.");
     }
 
-    public String system_add_keyspace(KsDef ksdef) throws InvalidRequestException, SchemaDisagreementException, org.apache.thrift.TException {
+    public String system_add_column_family(CfDef cf_def) throws InvalidRequestException, SchemaDisagreementException, TException {
         throw new ClosedCassandraIfaceException("Connection has closed.");
     }
 
-    public String system_drop_keyspace(String string) throws InvalidRequestException, SchemaDisagreementException, org.apache.thrift.TException {
+    public String system_drop_column_family(String column_family) throws InvalidRequestException, SchemaDisagreementException, TException {
         throw new ClosedCassandraIfaceException("Connection has closed.");
     }
 
-    public String system_update_keyspace(KsDef ksdef) throws InvalidRequestException, SchemaDisagreementException, org.apache.thrift.TException {
+    public String system_add_keyspace(KsDef ks_def) throws InvalidRequestException, SchemaDisagreementException, TException {
         throw new ClosedCassandraIfaceException("Connection has closed.");
     }
 
-    public String system_update_column_family(CfDef cfdef) throws InvalidRequestException, SchemaDisagreementException, org.apache.thrift.TException {
+    public String system_drop_keyspace(String keyspace) throws InvalidRequestException, SchemaDisagreementException, TException {
         throw new ClosedCassandraIfaceException("Connection has closed.");
     }
 
-    public CqlResult execute_cql_query(ByteBuffer bb, Compression cmprsn) throws InvalidRequestException, UnavailableException, TimedOutException, SchemaDisagreementException, org.apache.thrift.TException {
+    public String system_update_keyspace(KsDef ks_def) throws InvalidRequestException, SchemaDisagreementException, TException {
         throw new ClosedCassandraIfaceException("Connection has closed.");
     }
 
-    public CqlPreparedResult prepare_cql_query(ByteBuffer bb, Compression cmprsn) throws InvalidRequestException, org.apache.thrift.TException {
+    public String system_update_column_family(CfDef cf_def) throws InvalidRequestException, SchemaDisagreementException, TException {
         throw new ClosedCassandraIfaceException("Connection has closed.");
     }
 
-    public CqlResult execute_prepared_cql_query(int i, List<ByteBuffer> list) throws InvalidRequestException, UnavailableException, TimedOutException, SchemaDisagreementException, org.apache.thrift.TException {
+    public CqlResult execute_cql_query(ByteBuffer query, Compression compression) throws InvalidRequestException, UnavailableException, TimedOutException, SchemaDisagreementException, TException {
         throw new ClosedCassandraIfaceException("Connection has closed.");
     }
 
-    public void set_cql_version(String string) throws InvalidRequestException, org.apache.thrift.TException {
+    public CqlResult execute_cql3_query(ByteBuffer query, Compression compression, ConsistencyLevel consistency) throws InvalidRequestException, UnavailableException, TimedOutException, SchemaDisagreementException, TException {
+        throw new ClosedCassandraIfaceException("Connection has closed.");
+    }
+
+    public CqlPreparedResult prepare_cql_query(ByteBuffer query, Compression compression) throws InvalidRequestException, TException {
+        throw new ClosedCassandraIfaceException("Connection has closed.");
+    }
+
+    public CqlPreparedResult prepare_cql3_query(ByteBuffer query, Compression compression) throws InvalidRequestException, TException {
+        throw new ClosedCassandraIfaceException("Connection has closed.");
+    }
+
+    public CqlResult execute_prepared_cql_query(int itemId, List<ByteBuffer> values) throws InvalidRequestException, UnavailableException, TimedOutException, SchemaDisagreementException, TException {
+        throw new ClosedCassandraIfaceException("Connection has closed.");
+    }
+
+    public CqlResult execute_prepared_cql3_query(int itemId, List<ByteBuffer> values, ConsistencyLevel consistency) throws InvalidRequestException, UnavailableException, TimedOutException, SchemaDisagreementException, TException {
+        throw new ClosedCassandraIfaceException("Connection has closed.");
+    }
+
+    public void set_cql_version(String version) throws InvalidRequestException, TException {
         throw new ClosedCassandraIfaceException("Connection has closed.");
     }
 }
