@@ -62,6 +62,11 @@
                 <artifactId>cassandra-jca-impl</artifactId>
                 <version>${cassandra.jca.impl.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.googlecode.cassandra-jca</groupId>
+                <artifactId>cassandra-jca-rar</artifactId>
+                <version>${cassandra.jca.rar.version}</version>
+            </dependency>
             
             <dependency>
                 <groupId>org.apache.cassandra</groupId>
