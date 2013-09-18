@@ -7,7 +7,7 @@
     <version>0.0.1-SNAPSHOT</version>
 
     <packaging>pom</packaging>
-    <name>cassandra-jca-parent</name>
+    <name>cassandra-jca</name>
 
     <modules>
         <module>cassandra-jca-parent</module>
