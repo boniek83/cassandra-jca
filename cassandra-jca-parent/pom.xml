@@ -12,15 +12,15 @@
     <artifactId>cassandra-jca-parent</artifactId>
     <packaging>pom</packaging>
     <name>cassandra-jca-parent</name>
-    <version>1.2.7-SNAPSHOT</version>
+    <version>1.2.7</version>
     <description />
     <url>http://code.google.com/p/cassandra-jca/source/browse/</url>
     
     <properties>
         <cassandra.version>1.2.7</cassandra.version>
-        <cassandra.jca.api.version>1.2.7-SNAPSHOT</cassandra.jca.api.version>
-        <cassandra.jca.impl.version>1.2.7-SNAPSHOT</cassandra.jca.impl.version>
-        <cassandra.jca.rar.version>1.2.7-SNAPSHOT</cassandra.jca.rar.version>
+        <cassandra.jca.api.version>1.2.7</cassandra.jca.api.version>
+        <cassandra.jca.impl.version>1.2.7</cassandra.jca.impl.version>
+        <cassandra.jca.rar.version>1.2.7</cassandra.jca.rar.version>
     </properties>
 
     <licenses>
