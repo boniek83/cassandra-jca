@@ -5,14 +5,14 @@
     <parent>
         <groupId>com.googlecode.cassandra-jca</groupId>
         <artifactId>cassandra-jca-parent</artifactId>
-        <version>1.2.5</version>
+        <version>1.2.7-SNAPSHOT</version>
     </parent>
     
     <groupId>com.googlecode.cassandra-jca</groupId>
     <artifactId>cassandra-jca-impl</artifactId>
     <packaging>jar</packaging>
     <name>cassandra-jca-impl</name>
-    <version>1.2.5</version>
+    <version>1.2.7-SNAPSHOT</version>
     <description />
     <url>http://code.google.com/p/cassandra-jca/source/browse/</url>
 
@@ -33,7 +33,7 @@
     <scm>
         <connection>scm:git:https://code.google.com/p/cassandra-jca/</connection>
         <developerConnection>scm:git:https://code.google.com/p/cassandra-jca/</developerConnection>
-        <url>http://code.google.com/p/cassandra-jca/source/browse</url>
+        <url>scm:git:https://code.google.com/p/cassandra-jca/</url>
     </scm>
     <developers>
         <developer>
