@@ -42,8 +42,8 @@
             <email>sergey.sarabun@gmail.com</email>
         </developer>
     </developers>
-
     
+
     <dependencies>
         <dependency>
             <groupId>com.googlecode.cassandra-jca</groupId>
@@ -72,7 +72,7 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        
+
         <dependency>
             <groupId>org.jboss.arquillian.junit</groupId>
             <artifactId>arquillian-junit-container</artifactId>
