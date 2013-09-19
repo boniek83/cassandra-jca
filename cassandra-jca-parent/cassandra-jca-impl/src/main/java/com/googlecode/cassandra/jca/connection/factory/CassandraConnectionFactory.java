@@ -14,7 +14,7 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.googlecode.cassadra.jca.connection.factory;
+package com.googlecode.cassandra.jca.connection.factory;
 
 import javax.naming.NamingException;
 import javax.naming.Reference;
@@ -24,14 +24,14 @@ import javax.resource.spi.ConnectionManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.googlecode.cassadra.jca.api.CassandraConnection;
+import com.googlecode.cassandra.jca.api.CassandraConnection;
 
 /**
  * 
  * @author sergey.sarabun@gmail.com
  * @date Apr 21, 2013
  */
-public class CassandraConnectionFactory implements com.googlecode.cassadra.jca.api.CassandraConnectionFactory {
+public class CassandraConnectionFactory implements com.googlecode.cassandra.jca.api.CassandraConnectionFactory {
 
     private final static Logger logger = LoggerFactory.getLogger(CassandraConnectionFactory.class);
     private static final long serialVersionUID = 1L;

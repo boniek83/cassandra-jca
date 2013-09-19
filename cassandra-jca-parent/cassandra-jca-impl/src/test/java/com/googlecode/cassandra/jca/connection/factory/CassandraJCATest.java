@@ -14,8 +14,9 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.googlecode.cassadra.jca.connection.factory;
+package com.googlecode.cassandra.jca.connection.factory;
 
+import com.googlecode.cassandra.jca.connection.factory.CassandraManagedConnectionFactory;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -36,12 +37,12 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.googlecode.cassadra.jca.api.CassandraConnection;
-import com.googlecode.cassadra.jca.api.CassandraConnectionFactory;
-import com.googlecode.cassadra.jca.connection.ClosedCassandraIface;
-import com.googlecode.cassadra.jca.connection.exception.ClosedCassandraIfaceException;
-import com.googlecode.cassadra.jca.managed.connection.CassandraManagedConnection;
-import com.googlecode.cassadra.jca.ra.CassandraResourceAdapter;
+import com.googlecode.cassandra.jca.api.CassandraConnection;
+import com.googlecode.cassandra.jca.api.CassandraConnectionFactory;
+import com.googlecode.cassandra.jca.connection.ClosedCassandraIface;
+import com.googlecode.cassandra.jca.connection.exception.ClosedCassandraIfaceException;
+import com.googlecode.cassandra.jca.managed.connection.CassandraManagedConnection;
+import com.googlecode.cassandra.jca.ra.CassandraResourceAdapter;
 
 /**
  * 

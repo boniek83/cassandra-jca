@@ -14,18 +14,17 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.googlecode.cassadra.jca.api;
-
-import org.apache.cassandra.thrift.Cassandra;
+package com.googlecode.cassandra.jca.managed.connection;
 
 /**
  *
  * @author sergey.sarabun@gmail.com
- * @date Apr 20, 2013
+ * @date Jul 15, 2013
  */
-public interface CassandraConnection {
-
-    Cassandra.Iface getInternalConnection();
+public interface ConnectionProvider {
 
     void close();
+
+    CassandraIfaceWrapper getInternalConnection();
+    
 }

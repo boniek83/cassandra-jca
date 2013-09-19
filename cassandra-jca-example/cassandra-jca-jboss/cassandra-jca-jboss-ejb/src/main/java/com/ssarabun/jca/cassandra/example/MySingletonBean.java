@@ -28,8 +28,8 @@ import org.apache.cassandra.thrift.KsDef;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.googlecode.cassadra.jca.api.CassandraConnection;
-import com.googlecode.cassadra.jca.api.CassandraConnectionFactory;
+import com.googlecode.cassandra.jca.api.CassandraConnection;
+import com.googlecode.cassandra.jca.api.CassandraConnectionFactory;
 
 /**
  * 

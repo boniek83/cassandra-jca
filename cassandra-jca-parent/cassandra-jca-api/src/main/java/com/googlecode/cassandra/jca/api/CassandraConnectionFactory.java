@@ -14,17 +14,18 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.googlecode.cassadra.jca.managed.connection;
+package com.googlecode.cassandra.jca.api;
+
+import java.io.Serializable;
+import javax.resource.Referenceable;
+import javax.resource.ResourceException;
 
 /**
  *
  * @author sergey.sarabun@gmail.com
- * @date Jul 15, 2013
+ * @date Apr 20, 2013
  */
-public interface ConnectionProvider {
+public interface CassandraConnectionFactory extends Serializable, Referenceable {
 
-    void close();
-
-    CassandraIfaceWrapper getInternalConnection();
-    
+    public CassandraConnection getConnection() throws ResourceException;
 }

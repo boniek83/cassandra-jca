@@ -14,7 +14,7 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.googlecode.cassadra.jca.connection.factory;
+package com.googlecode.cassandra.jca.connection.factory;
 
 import java.io.PrintWriter;
 import java.util.Set;
@@ -32,7 +32,7 @@ import javax.security.auth.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.googlecode.cassadra.jca.managed.connection.CassandraManagedConnection;
+import com.googlecode.cassandra.jca.managed.connection.CassandraManagedConnection;
 
 /**
  * 

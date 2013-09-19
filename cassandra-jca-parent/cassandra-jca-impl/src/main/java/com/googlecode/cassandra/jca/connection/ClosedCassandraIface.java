@@ -14,7 +14,7 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.googlecode.cassadra.jca.connection;
+package com.googlecode.cassandra.jca.connection;
 
 
 import java.nio.ByteBuffer;
@@ -50,7 +50,7 @@ import org.apache.cassandra.thrift.TokenRange;
 import org.apache.cassandra.thrift.UnavailableException;
 import org.apache.thrift.TException;
 
-import com.googlecode.cassadra.jca.connection.exception.ClosedCassandraIfaceException;
+import com.googlecode.cassandra.jca.connection.exception.ClosedCassandraIfaceException;
 
 
 /**

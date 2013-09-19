@@ -14,38 +14,18 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.googlecode.cassadra.jca.connection;
+package com.googlecode.cassandra.jca.api;
 
 import org.apache.cassandra.thrift.Cassandra;
 
-import com.googlecode.cassadra.jca.managed.connection.CassandraIfaceWrapper;
-import com.googlecode.cassadra.jca.managed.connection.ConnectionProvider;
-
 /**
- * 
+ *
  * @author sergey.sarabun@gmail.com
- * @date Jun 24, 2013
+ * @date Apr 20, 2013
  */
-public class CassandraConnection implements com.googlecode.cassadra.jca.api.CassandraConnection {
+public interface CassandraConnection {
 
-    private final ConnectionProvider mcf;
-    private CassandraIfaceWrapper iface = null;
+    Cassandra.Iface getInternalConnection();
 
-    public CassandraConnection(ConnectionProvider mcf) {
-        this.mcf = mcf;
-    }
-
-    public Cassandra.Iface getInternalConnection() {
-        if (iface == null) {
-            iface = mcf.getInternalConnection();
-        }
-        return iface;
-    }
-
-    public void close() {
-        if (iface != null) {
-            iface.setIface(new ClosedCassandraIface());
-        }
-        mcf.close();
-    }
+    void close();
 }
