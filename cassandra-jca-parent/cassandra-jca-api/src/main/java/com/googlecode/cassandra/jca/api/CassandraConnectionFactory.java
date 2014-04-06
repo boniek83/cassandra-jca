@@ -27,5 +27,5 @@ import javax.resource.ResourceException;
  */
 public interface CassandraConnectionFactory extends Serializable, Referenceable {
 
-    public CassandraConnection getConnection() throws ResourceException;
+    CassandraConnection getConnection() throws ResourceException;
 }

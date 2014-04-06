@@ -24,17 +24,14 @@ import javax.resource.spi.ResourceAdapterInternalException;
 import javax.resource.spi.endpoint.MessageEndpointFactory;
 import javax.transaction.xa.XAResource;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 /**
- * 
+ *
  * @author sergey.sarabun@gmail.com
  * @date Apr 21, 2013
  */
 public class CassandraResourceAdapter implements ResourceAdapter {
 
-    private static final Logger logger = LoggerFactory.getLogger(CassandraResourceAdapter.class);
+//    private static final Logger logger = LoggerFactory.getLogger(CassandraResourceAdapter.class);
 
     public void start(BootstrapContext ctx) throws ResourceAdapterInternalException {
     }
@@ -60,10 +57,6 @@ public class CassandraResourceAdapter implements ResourceAdapter {
         if (getClass() != obj.getClass()) {
             return false;
         }
-
-        final CassandraResourceAdapter other = (CassandraResourceAdapter) obj;
-
-        //TODO
 
         return true;
     }

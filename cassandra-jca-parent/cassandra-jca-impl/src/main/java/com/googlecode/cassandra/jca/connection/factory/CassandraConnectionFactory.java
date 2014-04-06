@@ -21,19 +21,16 @@ import javax.naming.Reference;
 import javax.resource.ResourceException;
 import javax.resource.spi.ConnectionManager;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.googlecode.cassandra.jca.api.CassandraConnection;
 
 /**
- * 
+ *
  * @author sergey.sarabun@gmail.com
  * @date Apr 21, 2013
  */
 public class CassandraConnectionFactory implements com.googlecode.cassandra.jca.api.CassandraConnectionFactory {
 
-    private final static Logger logger = LoggerFactory.getLogger(CassandraConnectionFactory.class);
+    //private final static Logger logger = LoggerFactory.getLogger(CassandraConnectionFactory.class);
     private static final long serialVersionUID = 1L;
     private CassandraManagedConnectionFactory mcf;
     private ConnectionManager cxManager;

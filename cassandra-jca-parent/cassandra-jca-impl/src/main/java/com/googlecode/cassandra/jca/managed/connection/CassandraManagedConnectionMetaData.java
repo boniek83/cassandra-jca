@@ -20,25 +20,27 @@ import javax.resource.ResourceException;
 import javax.resource.spi.ManagedConnectionMetaData;
 
 /**
- * 
+ *
  * @author sergey.sarabun@gmail.com
  * @date Jun 24, 2013
  */
 public class CassandraManagedConnectionMetaData implements ManagedConnectionMetaData {
 
+    private static final String ERROR_MESSAGE = "Not supported yet.";
+
     public String getEISProductName() throws ResourceException {
-        throw new UnsupportedOperationException("Not supported yet.");
+        throw new UnsupportedOperationException(ERROR_MESSAGE);
     }
 
     public String getEISProductVersion() throws ResourceException {
-        throw new UnsupportedOperationException("Not supported yet.");
+        throw new UnsupportedOperationException(ERROR_MESSAGE);
     }
 
     public int getMaxConnections() throws ResourceException {
-        throw new UnsupportedOperationException("Not supported yet.");
+        throw new UnsupportedOperationException(ERROR_MESSAGE);
     }
 
     public String getUserName() throws ResourceException {
-        throw new UnsupportedOperationException("Not supported yet.");
+        throw new UnsupportedOperationException(ERROR_MESSAGE);
     }
 }

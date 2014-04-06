@@ -25,7 +25,7 @@ import org.junit.runners.Suite;
 import com.googlecode.cassandra.jca.connection.factory.CassandraJCATest;
 
 /**
- * 
+ *
  * @author sergey.sarabun@gmail.com
  * @date Jul 17, 2013
  */

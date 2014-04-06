@@ -39,8 +39,6 @@ import org.apache.thrift.protocol.TBinaryProtocol;
 import org.apache.thrift.protocol.TProtocol;
 import org.apache.thrift.transport.TFramedTransport;
 import org.apache.thrift.transport.TSocket;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.googlecode.cassandra.jca.connection.CassandraConnection;
 import com.googlecode.cassandra.jca.connection.factory.CassandraProperties;
@@ -52,7 +50,7 @@ import com.googlecode.cassandra.jca.connection.factory.CassandraProperties;
  */
 public class CassandraManagedConnection implements ManagedConnection, ConnectionProvider {
 
-    private static final Logger logger = LoggerFactory.getLogger(CassandraManagedConnection.class);
+//    private static final Logger logger = LoggerFactory.getLogger(CassandraManagedConnection.class);
     private PrintWriter out;
     private List<ConnectionEventListener> listeners = new ArrayList<ConnectionEventListener>();
     //

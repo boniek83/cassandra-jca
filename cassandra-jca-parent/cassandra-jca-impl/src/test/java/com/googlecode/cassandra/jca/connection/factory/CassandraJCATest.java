@@ -45,7 +45,7 @@ import com.googlecode.cassandra.jca.managed.connection.CassandraManagedConnectio
 import com.googlecode.cassandra.jca.ra.CassandraResourceAdapter;
 
 /**
- * 
+ *
  * @author sergey.sarabun@gmail.com
  * @date Jul 17, 2013
  */
@@ -79,7 +79,9 @@ public class CassandraJCATest {
 
         return rar;
     }
-    /** resource */
+    /**
+     * resource
+     */
     @Resource(mappedName = "java:/eis/CassandraConnectionFactory")
     private CassandraConnectionFactory cf;
 
