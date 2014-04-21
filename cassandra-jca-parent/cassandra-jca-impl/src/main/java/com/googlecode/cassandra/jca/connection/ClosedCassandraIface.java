@@ -50,6 +50,7 @@ import org.apache.cassandra.thrift.UnavailableException;
 import org.apache.thrift.TException;
 
 import com.googlecode.cassandra.jca.connection.exception.ClosedCassandraIfaceException;
+import org.apache.cassandra.thrift.CASResult;
 
 /**
  *
@@ -60,71 +61,75 @@ public class ClosedCassandraIface implements Cassandra.Iface {
 
     private static final String ERROR_MESSAGE = "Connection has closed.";
 
-    public void login(AuthenticationRequest auth_request) throws AuthenticationException, AuthorizationException, TException {
+    public void login(AuthenticationRequest ar) throws AuthenticationException, AuthorizationException, TException {
         throw new ClosedCassandraIfaceException(ERROR_MESSAGE);
     }
 
-    public void set_keyspace(String keyspace) throws InvalidRequestException, TException {
+    public void set_keyspace(String string) throws InvalidRequestException, TException {
         throw new ClosedCassandraIfaceException(ERROR_MESSAGE);
     }
 
-    public ColumnOrSuperColumn get(ByteBuffer key, ColumnPath column_path, ConsistencyLevel consistency_level) throws InvalidRequestException, NotFoundException, UnavailableException, TimedOutException, TException {
+    public ColumnOrSuperColumn get(ByteBuffer bb, ColumnPath cp, ConsistencyLevel cl) throws InvalidRequestException, NotFoundException, UnavailableException, TimedOutException, TException {
         throw new ClosedCassandraIfaceException(ERROR_MESSAGE);
     }
 
-    public List<ColumnOrSuperColumn> get_slice(ByteBuffer key, ColumnParent column_parent, SlicePredicate predicate, ConsistencyLevel consistency_level) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
+    public List<ColumnOrSuperColumn> get_slice(ByteBuffer bb, ColumnParent cp, SlicePredicate sp, ConsistencyLevel cl) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
         throw new ClosedCassandraIfaceException(ERROR_MESSAGE);
     }
 
-    public int get_count(ByteBuffer key, ColumnParent column_parent, SlicePredicate predicate, ConsistencyLevel consistency_level) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
+    public int get_count(ByteBuffer bb, ColumnParent cp, SlicePredicate sp, ConsistencyLevel cl) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
         throw new ClosedCassandraIfaceException(ERROR_MESSAGE);
     }
 
-    public Map<ByteBuffer, List<ColumnOrSuperColumn>> multiget_slice(List<ByteBuffer> keys, ColumnParent column_parent, SlicePredicate predicate, ConsistencyLevel consistency_level) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
+    public Map<ByteBuffer, List<ColumnOrSuperColumn>> multiget_slice(List<ByteBuffer> list, ColumnParent cp, SlicePredicate sp, ConsistencyLevel cl) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
         throw new ClosedCassandraIfaceException(ERROR_MESSAGE);
     }
 
-    public Map<ByteBuffer, Integer> multiget_count(List<ByteBuffer> keys, ColumnParent column_parent, SlicePredicate predicate, ConsistencyLevel consistency_level) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
+    public Map<ByteBuffer, Integer> multiget_count(List<ByteBuffer> list, ColumnParent cp, SlicePredicate sp, ConsistencyLevel cl) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
         throw new ClosedCassandraIfaceException(ERROR_MESSAGE);
     }
 
-    public List<KeySlice> get_range_slices(ColumnParent column_parent, SlicePredicate predicate, KeyRange range, ConsistencyLevel consistency_level) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
+    public List<KeySlice> get_range_slices(ColumnParent cp, SlicePredicate sp, KeyRange kr, ConsistencyLevel cl) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
         throw new ClosedCassandraIfaceException(ERROR_MESSAGE);
     }
 
-    public List<KeySlice> get_paged_slice(String column_family, KeyRange range, ByteBuffer start_column, ConsistencyLevel consistency_level) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
+    public List<KeySlice> get_paged_slice(String string, KeyRange kr, ByteBuffer bb, ConsistencyLevel cl) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
         throw new ClosedCassandraIfaceException(ERROR_MESSAGE);
     }
 
-    public List<KeySlice> get_indexed_slices(ColumnParent column_parent, IndexClause index_clause, SlicePredicate column_predicate, ConsistencyLevel consistency_level) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
+    public List<KeySlice> get_indexed_slices(ColumnParent cp, IndexClause ic, SlicePredicate sp, ConsistencyLevel cl) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
         throw new ClosedCassandraIfaceException(ERROR_MESSAGE);
     }
 
-    public void insert(ByteBuffer key, ColumnParent column_parent, Column column, ConsistencyLevel consistency_level) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
+    public void insert(ByteBuffer bb, ColumnParent cp, Column column, ConsistencyLevel cl) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
         throw new ClosedCassandraIfaceException(ERROR_MESSAGE);
     }
 
-    public void add(ByteBuffer key, ColumnParent column_parent, CounterColumn column, ConsistencyLevel consistency_level) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
+    public void add(ByteBuffer bb, ColumnParent cp, CounterColumn cc, ConsistencyLevel cl) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
         throw new ClosedCassandraIfaceException(ERROR_MESSAGE);
     }
 
-    public void remove(ByteBuffer key, ColumnPath column_path, long timestamp, ConsistencyLevel consistency_level) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
+    public CASResult cas(ByteBuffer bb, String string, List<Column> list, List<Column> list1, ConsistencyLevel cl, ConsistencyLevel cl1) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
         throw new ClosedCassandraIfaceException(ERROR_MESSAGE);
     }
 
-    public void remove_counter(ByteBuffer key, ColumnPath path, ConsistencyLevel consistency_level) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
+    public void remove(ByteBuffer bb, ColumnPath cp, long l, ConsistencyLevel cl) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
         throw new ClosedCassandraIfaceException(ERROR_MESSAGE);
     }
 
-    public void batch_mutate(Map<ByteBuffer, Map<String, List<Mutation>>> mutation_map, ConsistencyLevel consistency_level) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
+    public void remove_counter(ByteBuffer bb, ColumnPath cp, ConsistencyLevel cl) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
         throw new ClosedCassandraIfaceException(ERROR_MESSAGE);
     }
 
-    public void atomic_batch_mutate(Map<ByteBuffer, Map<String, List<Mutation>>> mutation_map, ConsistencyLevel consistency_level) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
+    public void batch_mutate(Map<ByteBuffer, Map<String, List<Mutation>>> map, ConsistencyLevel cl) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
         throw new ClosedCassandraIfaceException(ERROR_MESSAGE);
     }
 
-    public void truncate(String cfname) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
+    public void atomic_batch_mutate(Map<ByteBuffer, Map<String, List<Mutation>>> map, ConsistencyLevel cl) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
+        throw new ClosedCassandraIfaceException(ERROR_MESSAGE);
+    }
+
+    public void truncate(String string) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
         throw new ClosedCassandraIfaceException(ERROR_MESSAGE);
     }
 
@@ -144,7 +149,11 @@ public class ClosedCassandraIface implements Cassandra.Iface {
         throw new ClosedCassandraIfaceException(ERROR_MESSAGE);
     }
 
-    public List<TokenRange> describe_ring(String keyspace) throws InvalidRequestException, TException {
+    public List<TokenRange> describe_ring(String string) throws InvalidRequestException, TException {
+        throw new ClosedCassandraIfaceException(ERROR_MESSAGE);
+    }
+
+    public List<TokenRange> describe_local_ring(String string) throws InvalidRequestException, TException {
         throw new ClosedCassandraIfaceException(ERROR_MESSAGE);
     }
 
@@ -160,11 +169,11 @@ public class ClosedCassandraIface implements Cassandra.Iface {
         throw new ClosedCassandraIfaceException(ERROR_MESSAGE);
     }
 
-    public KsDef describe_keyspace(String keyspace) throws NotFoundException, InvalidRequestException, TException {
+    public KsDef describe_keyspace(String string) throws NotFoundException, InvalidRequestException, TException {
         throw new ClosedCassandraIfaceException(ERROR_MESSAGE);
     }
 
-    public List<String> describe_splits(String cfName, String start_token, String end_token, int keys_per_split) throws InvalidRequestException, TException {
+    public List<String> describe_splits(String string, String string1, String string2, int i) throws InvalidRequestException, TException {
         throw new ClosedCassandraIfaceException(ERROR_MESSAGE);
     }
 
@@ -172,59 +181,59 @@ public class ClosedCassandraIface implements Cassandra.Iface {
         throw new ClosedCassandraIfaceException(ERROR_MESSAGE);
     }
 
-    public List<CfSplit> describe_splits_ex(String cfName, String start_token, String end_token, int keys_per_split) throws InvalidRequestException, TException {
+    public List<CfSplit> describe_splits_ex(String string, String string1, String string2, int i) throws InvalidRequestException, TException {
         throw new ClosedCassandraIfaceException(ERROR_MESSAGE);
     }
 
-    public String system_add_column_family(CfDef cf_def) throws InvalidRequestException, SchemaDisagreementException, TException {
+    public String system_add_column_family(CfDef cfdef) throws InvalidRequestException, SchemaDisagreementException, TException {
         throw new ClosedCassandraIfaceException(ERROR_MESSAGE);
     }
 
-    public String system_drop_column_family(String column_family) throws InvalidRequestException, SchemaDisagreementException, TException {
+    public String system_drop_column_family(String string) throws InvalidRequestException, SchemaDisagreementException, TException {
         throw new ClosedCassandraIfaceException(ERROR_MESSAGE);
     }
 
-    public String system_add_keyspace(KsDef ks_def) throws InvalidRequestException, SchemaDisagreementException, TException {
+    public String system_add_keyspace(KsDef ksdef) throws InvalidRequestException, SchemaDisagreementException, TException {
         throw new ClosedCassandraIfaceException(ERROR_MESSAGE);
     }
 
-    public String system_drop_keyspace(String keyspace) throws InvalidRequestException, SchemaDisagreementException, TException {
+    public String system_drop_keyspace(String string) throws InvalidRequestException, SchemaDisagreementException, TException {
         throw new ClosedCassandraIfaceException(ERROR_MESSAGE);
     }
 
-    public String system_update_keyspace(KsDef ks_def) throws InvalidRequestException, SchemaDisagreementException, TException {
+    public String system_update_keyspace(KsDef ksdef) throws InvalidRequestException, SchemaDisagreementException, TException {
         throw new ClosedCassandraIfaceException(ERROR_MESSAGE);
     }
 
-    public String system_update_column_family(CfDef cf_def) throws InvalidRequestException, SchemaDisagreementException, TException {
+    public String system_update_column_family(CfDef cfdef) throws InvalidRequestException, SchemaDisagreementException, TException {
         throw new ClosedCassandraIfaceException(ERROR_MESSAGE);
     }
 
-    public CqlResult execute_cql_query(ByteBuffer query, Compression compression) throws InvalidRequestException, UnavailableException, TimedOutException, SchemaDisagreementException, TException {
+    public CqlResult execute_cql_query(ByteBuffer bb, Compression cmprsn) throws InvalidRequestException, UnavailableException, TimedOutException, SchemaDisagreementException, TException {
         throw new ClosedCassandraIfaceException(ERROR_MESSAGE);
     }
 
-    public CqlResult execute_cql3_query(ByteBuffer query, Compression compression, ConsistencyLevel consistency) throws InvalidRequestException, UnavailableException, TimedOutException, SchemaDisagreementException, TException {
+    public CqlResult execute_cql3_query(ByteBuffer bb, Compression cmprsn, ConsistencyLevel cl) throws InvalidRequestException, UnavailableException, TimedOutException, SchemaDisagreementException, TException {
         throw new ClosedCassandraIfaceException(ERROR_MESSAGE);
     }
 
-    public CqlPreparedResult prepare_cql_query(ByteBuffer query, Compression compression) throws InvalidRequestException, TException {
+    public CqlPreparedResult prepare_cql_query(ByteBuffer bb, Compression cmprsn) throws InvalidRequestException, TException {
         throw new ClosedCassandraIfaceException(ERROR_MESSAGE);
     }
 
-    public CqlPreparedResult prepare_cql3_query(ByteBuffer query, Compression compression) throws InvalidRequestException, TException {
+    public CqlPreparedResult prepare_cql3_query(ByteBuffer bb, Compression cmprsn) throws InvalidRequestException, TException {
         throw new ClosedCassandraIfaceException(ERROR_MESSAGE);
     }
 
-    public CqlResult execute_prepared_cql_query(int itemId, List<ByteBuffer> values) throws InvalidRequestException, UnavailableException, TimedOutException, SchemaDisagreementException, TException {
+    public CqlResult execute_prepared_cql_query(int i, List<ByteBuffer> list) throws InvalidRequestException, UnavailableException, TimedOutException, SchemaDisagreementException, TException {
         throw new ClosedCassandraIfaceException(ERROR_MESSAGE);
     }
 
-    public CqlResult execute_prepared_cql3_query(int itemId, List<ByteBuffer> values, ConsistencyLevel consistency) throws InvalidRequestException, UnavailableException, TimedOutException, SchemaDisagreementException, TException {
+    public CqlResult execute_prepared_cql3_query(int i, List<ByteBuffer> list, ConsistencyLevel cl) throws InvalidRequestException, UnavailableException, TimedOutException, SchemaDisagreementException, TException {
         throw new ClosedCassandraIfaceException(ERROR_MESSAGE);
     }
 
-    public void set_cql_version(String version) throws InvalidRequestException, TException {
+    public void set_cql_version(String string) throws InvalidRequestException, TException {
         throw new ClosedCassandraIfaceException(ERROR_MESSAGE);
     }
 }

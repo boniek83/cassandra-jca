@@ -34,7 +34,6 @@ import javax.transaction.xa.XAResource;
 
 import org.apache.cassandra.thrift.AuthenticationRequest;
 import org.apache.cassandra.thrift.Cassandra;
-import org.apache.commons.lang.StringUtils;
 import org.apache.thrift.protocol.TBinaryProtocol;
 import org.apache.thrift.protocol.TProtocol;
 import org.apache.thrift.transport.TFramedTransport;
@@ -42,9 +41,10 @@ import org.apache.thrift.transport.TSocket;
 
 import com.googlecode.cassandra.jca.connection.CassandraConnection;
 import com.googlecode.cassandra.jca.connection.factory.CassandraProperties;
+import org.apache.commons.lang3.StringUtils;
 
 /**
- * 
+ *
  * @author sergey.sarabun@gmail.com
  * @date Apr 29, 2013
  */

@@ -16,7 +16,6 @@
  */
 package com.googlecode.cassandra.jca.connection.factory;
 
-import com.googlecode.cassandra.jca.connection.factory.CassandraManagedConnectionFactory;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -43,6 +42,7 @@ import com.googlecode.cassandra.jca.connection.ClosedCassandraIface;
 import com.googlecode.cassandra.jca.connection.exception.ClosedCassandraIfaceException;
 import com.googlecode.cassandra.jca.managed.connection.CassandraManagedConnection;
 import com.googlecode.cassandra.jca.ra.CassandraResourceAdapter;
+import java.io.File;
 
 /**
  *
@@ -74,8 +74,12 @@ public class CassandraJCATest {
 
         MavenDependencyResolver resolver = DependencyResolvers.use(MavenDependencyResolver.class).loadMetadataFromPom("pom.xml");
         resolver.artifact("com.googlecode.cassandra-jca:cassandra-jca-api");
+        resolver.exclusion("commons-logging:commons-logging");
+        resolver.exclusion("org.slf4j:slf4j-api");
         resolver.artifact("org.apache.cassandra:cassandra-clientutil");
-        rar.addAsLibraries(resolver.resolveAsFiles());
+        resolver.exclusion("com.google.guava:guava");
+        File[] files = resolver.resolveAsFiles();
+        rar.addAsLibraries(files);
 
         return rar;
     }
