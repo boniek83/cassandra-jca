@@ -5,14 +5,14 @@
     <parent>
         <groupId>com.googlecode.cassandra-jca</groupId>
         <artifactId>cassandra-jca-parent</artifactId>
-        <version>1.0.12-SNAPSHOT</version>
+        <version>1.0.12.0-SNAPSHOT</version>
     </parent>
     
     <groupId>com.googlecode.cassandra-jca</groupId>
     <artifactId>cassandra-jca-rar</artifactId>
     <packaging>rar</packaging>
     <name>cassandra-jca-rar</name>
-    <version>1.0.12-SNAPSHOT</version>
+    <version>1.0.12.0-SNAPSHOT</version>
     <description></description>
     <url>http://code.google.com/p/cassandra-jca/source/browse/</url>
 
@@ -47,6 +47,12 @@
         <dependency>
             <groupId>com.googlecode.cassandra-jca</groupId>
             <artifactId>cassandra-jca-impl</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>servlet-api</artifactId>
+                    <groupId>javax.servlet</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
     

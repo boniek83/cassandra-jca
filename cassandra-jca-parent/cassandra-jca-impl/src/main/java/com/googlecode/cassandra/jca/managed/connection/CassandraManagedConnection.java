@@ -14,7 +14,7 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.googlecode.cassadra.jca.managed.connection;
+package com.googlecode.cassandra.jca.managed.connection;
 
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -39,11 +39,9 @@ import org.apache.thrift.protocol.TBinaryProtocol;
 import org.apache.thrift.protocol.TProtocol;
 import org.apache.thrift.transport.TFramedTransport;
 import org.apache.thrift.transport.TSocket;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-import com.googlecode.cassadra.jca.connection.CassandraConnection;
-import com.googlecode.cassadra.jca.connection.factory.CassandraProperties;
+import com.googlecode.cassandra.jca.connection.CassandraConnection;
+import com.googlecode.cassandra.jca.connectionfactory.CassandraProperties;
 
 /**
  * 
@@ -52,7 +50,6 @@ import com.googlecode.cassadra.jca.connection.factory.CassandraProperties;
  */
 public class CassandraManagedConnection implements ManagedConnection, ConnectionProvider {
 
-    private static final Logger logger = LoggerFactory.getLogger(CassandraManagedConnection.class);
     private PrintWriter out;
     private List<ConnectionEventListener> listeners = new ArrayList<ConnectionEventListener>();
     //

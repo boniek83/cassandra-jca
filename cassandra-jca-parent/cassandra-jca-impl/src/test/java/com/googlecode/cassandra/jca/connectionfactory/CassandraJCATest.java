@@ -14,8 +14,9 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.googlecode.cassadra.jca.connection.factory;
+package com.googlecode.cassandra.jca.connectionfactory;
 
+import com.googlecode.cassandra.jca.connectionfactory.CassandraManagedConnectionFactory;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -35,15 +36,16 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.googlecode.cassadra.jca.api.CassandraConnection;
-import com.googlecode.cassadra.jca.api.CassandraConnectionFactory;
-import com.googlecode.cassadra.jca.connection.ClosedCassandraIface;
-import com.googlecode.cassadra.jca.connection.exception.ClosedCassandraIfaceException;
-import com.googlecode.cassadra.jca.managed.connection.CassandraManagedConnection;
-import com.googlecode.cassadra.jca.ra.CassandraResourceAdapter;
+import com.googlecode.cassandra.jca.api.CassandraConnection;
+import com.googlecode.cassandra.jca.api.CassandraConnectionFactory;
+import com.googlecode.cassandra.jca.connection.ClosedCassandraIface;
+import com.googlecode.cassandra.jca.connection.exception.ClosedCassandraIfaceException;
+import com.googlecode.cassandra.jca.managed.connection.CassandraManagedConnection;
+import com.googlecode.cassandra.jca.ra.CassandraResourceAdapter;
+import java.io.File;
 
 /**
- * 
+ *
  * @author sergey.sarabun@gmail.com
  * @date Jul 17, 2013
  */
@@ -71,12 +73,23 @@ public class CassandraJCATest {
 
         MavenDependencyResolver resolver = DependencyResolvers.use(MavenDependencyResolver.class).loadMetadataFromPom("pom.xml");
         resolver.artifact("com.googlecode.cassandra-jca:cassandra-jca-api");
+        resolver.exclusion("org.slf4j:slf4j-api");
+        resolver.exclusion("javax.servlet:servlet-api");
+        resolver.exclusion("org.apache.httpcomponents:httpclient");
+        resolver.exclusion("commons-logging:commons-logging");
         resolver.artifact("org.apache.cassandra:cassandra-clientutil");
-        rar.addAsLibraries(resolver.resolveAsFiles());
+        resolver.exclusion("com.google.guava:guava");
+        File[] files = resolver.resolveAsFiles();
+//        for (File file : files) {
+//            System.out.println("file = " + file);
+//        }
+        rar.addAsLibraries(files);
 
         return rar;
     }
-    /** resource */
+    /**
+     * resource
+     */
     @Resource(mappedName = "java:/eis/CassandraConnectionFactory")
     private CassandraConnectionFactory cf;
 

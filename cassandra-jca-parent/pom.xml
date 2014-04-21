@@ -12,17 +12,16 @@
     <artifactId>cassandra-jca-parent</artifactId>
     <packaging>pom</packaging>
     <name>cassandra-jca-parent</name>
-    <version>1.0.12-SNAPSHOT</version>
+    <version>1.0.12.0-SNAPSHOT</version>
     <description></description>
     <url>http://code.google.com/p/cassandra-jca/source/browse/</url>
     
     <properties>
         <cassandra.version>1.0.12</cassandra.version>
-        <cassandra.jca.api.version>1.0.12-SNAPSHOT</cassandra.jca.api.version>
-        <cassandra.jca.impl.version>1.0.12-SNAPSHOT</cassandra.jca.impl.version>
-        <cassandra.jca.rar.version>1.0.12-SNAPSHOT</cassandra.jca.rar.version>
+        <cassandra.jca.api.version>1.0.12.0-SNAPSHOT</cassandra.jca.api.version>
+        <cassandra.jca.impl.version>1.0.12.0-SNAPSHOT</cassandra.jca.impl.version>
+        <cassandra.jca.rar.version>1.0.12.0-SNAPSHOT</cassandra.jca.rar.version>
     </properties>
-
     <licenses>
         <license>
             <name>GNU Lesser General Public License 3.0</name>
@@ -33,7 +32,7 @@
     <scm>
         <connection>scm:git:https://code.google.com/p/cassandra-jca/</connection>
         <developerConnection>scm:git:https://code.google.com/p/cassandra-jca/</developerConnection>
-        <url>http://code.google.com/p/cassandra-jca/source/browse</url>
+        <url>scm:git:https://code.google.com/p/cassandra-jca/</url>
     </scm>
     <developers>
         <developer>
@@ -48,8 +47,8 @@
         <module>cassandra-jca-impl</module>
         <module>cassandra-jca-rar</module>
     </modules>
-    
-    
+   
+   
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -62,7 +61,12 @@
                 <artifactId>cassandra-jca-impl</artifactId>
                 <version>${cassandra.jca.impl.version}</version>
             </dependency>
-            
+            <dependency>
+                <groupId>com.googlecode.cassandra-jca</groupId>
+                <artifactId>cassandra-jca-rar</artifactId>
+                <version>${cassandra.jca.rar.version}</version>
+            </dependency>
+           
             <dependency>
                 <groupId>org.apache.cassandra</groupId>
                 <artifactId>cassandra-thrift</artifactId>
@@ -80,8 +84,8 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-    
-    
+   
+   
     <dependencies>
         <dependency>
             <groupId>javax</groupId>
@@ -96,4 +100,23 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
+   
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>3.1</version>
+                <executions>
+                    <execution>
+                        <id>pmdcheck</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>    
+        </plugins>
+    </build>
 </project>

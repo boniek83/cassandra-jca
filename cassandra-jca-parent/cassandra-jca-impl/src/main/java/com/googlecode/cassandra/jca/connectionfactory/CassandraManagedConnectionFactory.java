@@ -14,7 +14,7 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.googlecode.cassadra.jca.connection.factory;
+package com.googlecode.cassandra.jca.connectionfactory;
 
 import java.io.PrintWriter;
 import java.util.Set;
@@ -29,13 +29,11 @@ import javax.resource.spi.ResourceAdapterAssociation;
 import javax.resource.spi.ValidatingManagedConnectionFactory;
 import javax.security.auth.Subject;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-import com.googlecode.cassadra.jca.managed.connection.CassandraManagedConnection;
+import com.googlecode.cassandra.jca.managed.connection.CassandraManagedConnection;
 
 /**
- * 
+ *
  * @author sergey.sarabun@gmail.com
  * @date Apr 21, 2013
  */
@@ -45,7 +43,6 @@ public class CassandraManagedConnectionFactory
         ValidatingManagedConnectionFactory,
         ResourceAdapterAssociation {
 
-    private static final Logger logger = LoggerFactory.getLogger(CassandraManagedConnectionFactory.class);
     private static final long serialVersionUID = 1L;
     private PrintWriter out;
     private ResourceAdapter ra;
@@ -95,20 +92,18 @@ public class CassandraManagedConnectionFactory
 
     @Override
     public boolean equals(Object obj) {
-        if (obj == this) {
-            return true;
+        boolean isEquals = true;
+        if (obj != this) {
+            if (obj == null) {
+                isEquals = false;
+            } else {
+                if (!(obj instanceof CassandraManagedConnectionFactory)) {
+                    isEquals = false;
+                }
+            }
         }
-        if (obj == null) {
-            return false;
-        }
-        if (!(obj instanceof CassandraManagedConnectionFactory)) {
-            return false;
-        }
-//        final CassandraManagedConnectionFactory other = (CassandraManagedConnectionFactory) obj;
-//        if (this.ra != other.ra && (this.ra == null || !this.ra.equals(other.ra))) {
-//            return false;
-//        }
-        return true;
+
+        return isEquals;
     }
 
     @Override

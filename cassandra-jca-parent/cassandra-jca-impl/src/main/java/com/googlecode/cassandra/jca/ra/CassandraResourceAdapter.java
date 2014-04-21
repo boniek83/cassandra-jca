@@ -14,7 +14,7 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.googlecode.cassadra.jca.ra;
+package com.googlecode.cassandra.jca.ra;
 
 import javax.resource.ResourceException;
 import javax.resource.spi.ActivationSpec;
@@ -24,17 +24,12 @@ import javax.resource.spi.ResourceAdapterInternalException;
 import javax.resource.spi.endpoint.MessageEndpointFactory;
 import javax.transaction.xa.XAResource;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 /**
- * 
+ *
  * @author sergey.sarabun@gmail.com
  * @date Apr 21, 2013
  */
 public class CassandraResourceAdapter implements ResourceAdapter {
-
-    private static final Logger logger = LoggerFactory.getLogger(CassandraResourceAdapter.class);
 
     public void start(BootstrapContext ctx) throws ResourceAdapterInternalException {
     }
@@ -54,18 +49,18 @@ public class CassandraResourceAdapter implements ResourceAdapter {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
+        boolean isEquals = true;
+        if (obj != this) {
+            if (obj == null) {
+                isEquals = false;
+            } else {
+                if (!(obj instanceof CassandraResourceAdapter)) {
+                    isEquals = false;
+                }
+            }
         }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
 
-        final CassandraResourceAdapter other = (CassandraResourceAdapter) obj;
-
-        //TODO
-
-        return true;
+        return isEquals;
     }
 
     @Override

@@ -29,11 +29,11 @@ import org.apache.cassandra.thrift.KsDef;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.googlecode.cassadra.jca.api.CassandraConnection;
-import com.googlecode.cassadra.jca.api.CassandraConnectionFactory;
+import com.googlecode.cassandra.jca.api.CassandraConnection;
+import com.googlecode.cassandra.jca.api.CassandraConnectionFactory;
 
 /**
- * 
+ *
  * @author sergey.sarabun@gmail.com
  * @date Jun 23, 2013
  */
@@ -49,7 +49,7 @@ public class MySingletonBean implements MySingleton {
     private SessionContext ctx;
 
     @PostConstruct
-    public void postConstruct() throws Exception {
+    public void postConstruct() {
         CassandraConnection c = null;
         try {
             c = cf.getConnection();

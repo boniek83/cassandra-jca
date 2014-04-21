@@ -14,18 +14,33 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.googlecode.cassadra.jca.api;
+package com.googlecode.cassandra.jca.managed.connection;
 
-import java.io.Serializable;
-import javax.resource.Referenceable;
 import javax.resource.ResourceException;
+import javax.resource.spi.ManagedConnectionMetaData;
 
 /**
  *
  * @author sergey.sarabun@gmail.com
- * @date Apr 20, 2013
+ * @date Jun 24, 2013
  */
-public interface CassandraConnectionFactory extends Serializable, Referenceable {
+public class CassandraManagedConnectionMetaData implements ManagedConnectionMetaData {
 
-    public CassandraConnection getConnection() throws ResourceException;
+    private static final String ERROR_MESSAGE = "Not supported yet.";
+
+    public String getEISProductName() throws ResourceException {
+        throw new UnsupportedOperationException(ERROR_MESSAGE);
+    }
+
+    public String getEISProductVersion() throws ResourceException {
+        throw new UnsupportedOperationException(ERROR_MESSAGE);
+    }
+
+    public int getMaxConnections() throws ResourceException {
+        throw new UnsupportedOperationException(ERROR_MESSAGE);
+    }
+
+    public String getUserName() throws ResourceException {
+        throw new UnsupportedOperationException(ERROR_MESSAGE);
+    }
 }

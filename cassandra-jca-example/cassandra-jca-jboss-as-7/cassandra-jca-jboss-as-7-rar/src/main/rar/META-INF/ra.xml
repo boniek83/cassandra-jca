@@ -13,16 +13,16 @@
     <eis-type></eis-type>
     <resourceadapter-version>4.2</resourceadapter-version>
     <resourceadapter>
-        <resourceadapter-class>com.ssarabun.jca.cassandra.CassandraResourceAdapter</resourceadapter-class>
+        <resourceadapter-class>com.googlecode.cassandra.jca.ra.CassandraResourceAdapter</resourceadapter-class>
         <outbound-resourceadapter>
             <connection-definition>
-                <managedconnectionfactory-class>com.ssarabun.jca.cassandra.connection.factory.CassandraManagedConnectionFactory</managedconnectionfactory-class>
+                <managedconnectionfactory-class>com.googlecode.cassandra.jca.connectionfactory.CassandraManagedConnectionFactory</managedconnectionfactory-class>
 
-                <connectionfactory-interface>com.ssarabun.jca.cassandra.api.CassandraConnectionFactory</connectionfactory-interface>
-                <connectionfactory-impl-class>com.ssarabun.jca.cassandra.connection.factory.CassandraConnectionFactory</connectionfactory-impl-class>
+                <connectionfactory-interface>com.googlecode.cassandra.jca.api.CassandraConnectionFactory</connectionfactory-interface>
+                <connectionfactory-impl-class>com.googlecode.cassandra.jca.connectionfactory.CassandraConnectionFactory</connectionfactory-impl-class>
 
-                <connection-interface>com.ssarabun.jca.cassandra.api.CassandraConnection</connection-interface>
-                <connection-impl-class>com.ssarabun.jca.cassandra.connection.CassandraConnection</connection-impl-class>
+                <connection-interface>com.googlecode.cassandra.jca.api.CassandraConnection</connection-interface>
+                <connection-impl-class>com.googlecode.cassandra.jca.connection.CassandraConnection</connection-impl-class>
             </connection-definition>
             <transaction-support>NoTransaction</transaction-support>
             <reauthentication-support>false</reauthentication-support>

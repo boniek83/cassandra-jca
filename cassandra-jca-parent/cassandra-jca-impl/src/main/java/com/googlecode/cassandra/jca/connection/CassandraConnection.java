@@ -14,31 +14,38 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.googlecode.cassadra.jca.managed.connection;
+package com.googlecode.cassandra.jca.connection;
 
-import javax.resource.ResourceException;
-import javax.resource.spi.ManagedConnectionMetaData;
+import org.apache.cassandra.thrift.Cassandra;
+
+import com.googlecode.cassandra.jca.managed.connection.CassandraIfaceWrapper;
+import com.googlecode.cassandra.jca.managed.connection.ConnectionProvider;
 
 /**
  * 
  * @author sergey.sarabun@gmail.com
  * @date Jun 24, 2013
  */
-public class CassandraManagedConnectionMetaData implements ManagedConnectionMetaData {
+public class CassandraConnection implements com.googlecode.cassandra.jca.api.CassandraConnection {
 
-    public String getEISProductName() throws ResourceException {
-        throw new UnsupportedOperationException("Not supported yet.");
+    private final ConnectionProvider mcf;
+    private CassandraIfaceWrapper iface = null;
+
+    public CassandraConnection(ConnectionProvider mcf) {
+        this.mcf = mcf;
     }
 
-    public String getEISProductVersion() throws ResourceException {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public Cassandra.Iface getInternalConnection() {
+        if (iface == null) {
+            iface = mcf.getInternalConnection();
+        }
+        return iface;
     }
 
-    public int getMaxConnections() throws ResourceException {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public String getUserName() throws ResourceException {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void close() {
+        if (iface != null) {
+            iface.setIface(new ClosedCassandraIface());
+        }
+        mcf.close();
     }
 }
