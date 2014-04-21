@@ -5,14 +5,14 @@
     <parent>
         <groupId>com.googlecode.cassandra-jca</groupId>
         <artifactId>cassandra-jca-parent</artifactId>
-        <version>2.0.6.0</version>
+        <version>2.0.7.0-SNAPSHOT</version>
     </parent>
     
     <groupId>com.googlecode.cassandra-jca</groupId>
     <artifactId>cassandra-jca-rar</artifactId>
     <packaging>rar</packaging>
     <name>cassandra-jca-rar</name>
-    <version>2.0.6.0</version>
+    <version>2.0.7.0-SNAPSHOT</version>
     <description />
     <url>http://code.google.com/p/cassandra-jca/source/browse/</url>
 
