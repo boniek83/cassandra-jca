@@ -12,9 +12,9 @@
     
 
     <properties>
-        <cassandra.jca.api.version>1.0.12.0-SNAPSHOT</cassandra.jca.api.version>
-        <cassandra.jca.impl.version>1.0.12.0-SNAPSHOT</cassandra.jca.impl.version>
-        <cassandra.jca.rar.version>1.0.12.0-SNAPSHOT</cassandra.jca.rar.version>
+        <cassandra.jca.api.version>1.0.12.1</cassandra.jca.api.version>
+        <cassandra.jca.impl.version>1.0.12.1</cassandra.jca.impl.version>
+        <cassandra.jca.rar.version>1.0.12.1</cassandra.jca.rar.version>
     </properties>
 
     
