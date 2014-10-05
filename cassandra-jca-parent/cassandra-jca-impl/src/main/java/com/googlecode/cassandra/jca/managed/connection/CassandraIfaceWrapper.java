@@ -24,6 +24,7 @@ import org.apache.cassandra.thrift.AuthenticationRequest;
 import org.apache.cassandra.thrift.AuthorizationException;
 import org.apache.cassandra.thrift.Cassandra;
 import org.apache.cassandra.thrift.CfDef;
+import org.apache.cassandra.thrift.CfSplit;
 import org.apache.cassandra.thrift.Column;
 import org.apache.cassandra.thrift.ColumnOrSuperColumn;
 import org.apache.cassandra.thrift.ColumnParent;
@@ -31,6 +32,7 @@ import org.apache.cassandra.thrift.ColumnPath;
 import org.apache.cassandra.thrift.Compression;
 import org.apache.cassandra.thrift.ConsistencyLevel;
 import org.apache.cassandra.thrift.CounterColumn;
+import org.apache.cassandra.thrift.CqlPreparedResult;
 import org.apache.cassandra.thrift.CqlResult;
 import org.apache.cassandra.thrift.IndexClause;
 import org.apache.cassandra.thrift.InvalidRequestException;
@@ -47,7 +49,7 @@ import org.apache.cassandra.thrift.UnavailableException;
 import org.apache.thrift.TException;
 
 /**
- * 
+ *
  * @author sergey.sarabun@gmail.com
  * @date Jul 15, 2013
  */
@@ -59,7 +61,8 @@ public class CassandraIfaceWrapper implements Cassandra.Iface {
         this.iface = iface;
     }
 
-    public void truncate(String string) throws InvalidRequestException, UnavailableException, TException {
+    @Override
+    public void truncate(String string) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
         iface.truncate(string);
     }
 
@@ -185,5 +188,35 @@ public class CassandraIfaceWrapper implements Cassandra.Iface {
 
     public void setIface(Cassandra.Iface iface) {
         this.iface = iface;
+    }
+
+    @Override
+    public List<KeySlice> get_paged_slice(String string, KeyRange kr, ByteBuffer bb, ConsistencyLevel cl) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
+        return iface.get_paged_slice(string, kr, bb, cl);
+    }
+
+    @Override
+    public Map<String, String> describe_token_map() throws InvalidRequestException, TException {
+        return iface.describe_token_map();
+    }
+
+    @Override
+    public List<CfSplit> describe_splits_ex(String string, String string1, String string2, int i) throws InvalidRequestException, TException {
+        return iface.describe_splits_ex(string, string1, string2, i);
+    }
+
+    @Override
+    public CqlPreparedResult prepare_cql_query(ByteBuffer bb, Compression cmprsn) throws InvalidRequestException, TException {
+        return iface.prepare_cql_query(bb, cmprsn);
+    }
+
+    @Override
+    public CqlResult execute_prepared_cql_query(int i, List<ByteBuffer> list) throws InvalidRequestException, UnavailableException, TimedOutException, SchemaDisagreementException, TException {
+        return iface.execute_prepared_cql_query(i, list);
+    }
+
+    @Override
+    public void set_cql_version(String string) throws InvalidRequestException, TException {
+        iface.set_cql_version(string);
     }
 }

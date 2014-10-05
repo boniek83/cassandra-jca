@@ -48,6 +48,8 @@ import org.apache.cassandra.thrift.UnavailableException;
 import org.apache.thrift.TException;
 
 import com.googlecode.cassandra.jca.connection.exception.ClosedCassandraIfaceException;
+import org.apache.cassandra.thrift.CfSplit;
+import org.apache.cassandra.thrift.CqlPreparedResult;
 
 /**
  *
@@ -179,6 +181,30 @@ public class ClosedCassandraIface implements Cassandra.Iface {
     }
 
     public CqlResult execute_cql_query(ByteBuffer bb, Compression cmprsn) throws InvalidRequestException, UnavailableException, TimedOutException, SchemaDisagreementException, TException {
+        throw new ClosedCassandraIfaceException(ERROR_MESSAGE);
+    }
+
+    public List<KeySlice> get_paged_slice(String string, KeyRange kr, ByteBuffer bb, ConsistencyLevel cl) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
+        throw new ClosedCassandraIfaceException(ERROR_MESSAGE);
+    }
+
+    public Map<String, String> describe_token_map() throws InvalidRequestException, TException {
+        throw new ClosedCassandraIfaceException(ERROR_MESSAGE);
+    }
+
+    public List<CfSplit> describe_splits_ex(String string, String string1, String string2, int i) throws InvalidRequestException, TException {
+        throw new ClosedCassandraIfaceException(ERROR_MESSAGE);
+    }
+
+    public CqlPreparedResult prepare_cql_query(ByteBuffer bb, Compression cmprsn) throws InvalidRequestException, TException {
+        throw new ClosedCassandraIfaceException(ERROR_MESSAGE);
+    }
+
+    public CqlResult execute_prepared_cql_query(int i, List<ByteBuffer> list) throws InvalidRequestException, UnavailableException, TimedOutException, SchemaDisagreementException, TException {
+        throw new ClosedCassandraIfaceException(ERROR_MESSAGE);
+    }
+
+    public void set_cql_version(String string) throws InvalidRequestException, TException {
         throw new ClosedCassandraIfaceException(ERROR_MESSAGE);
     }
 }
