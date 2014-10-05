@@ -47,7 +47,7 @@ public class CassandraManagedConnectionFactory
     private PrintWriter out;
     private ResourceAdapter ra;
 
-    public Object createConnectionFactory(ConnectionManager cxManager) throws ResourceException {
+    public com.googlecode.cassandra.jca.api.CassandraConnectionFactory createConnectionFactory(ConnectionManager cxManager) throws ResourceException {
         return new CassandraConnectionFactory(this, cxManager);
     }
 

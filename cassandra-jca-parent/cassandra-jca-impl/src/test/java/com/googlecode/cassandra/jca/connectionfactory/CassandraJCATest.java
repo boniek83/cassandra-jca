@@ -16,7 +16,6 @@
  */
 package com.googlecode.cassandra.jca.connectionfactory;
 
-import com.googlecode.cassandra.jca.connectionfactory.CassandraManagedConnectionFactory;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;

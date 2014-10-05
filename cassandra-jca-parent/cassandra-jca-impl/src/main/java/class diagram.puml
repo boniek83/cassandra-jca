@@ -1,0 +1,101 @@
+@startuml
+
+skinparam componentStyle uml2
+
+
+package org.apache.cassandra.thrift {
+    class Cassandra
+    interface "Cassandra.Iface"
+}
+
+
+package javax.resource.spi {
+    interface ManagedConnectionFactory
+    interface ValidatingManagedConnectionFactory
+    interface ResourceAdapterAssociation
+    interface ManagedConnection
+    interface ManagedConnectionMetaData
+}
+
+
+package com.googlecode.cassandra.jca.api {
+    interface CassandraConnection {
+        +Cassandra.Iface getInternalConnection()
+        +void close()
+    }
+
+    interface CassandraConnectionFactory {
+        +CassandraConnection getConnection()
+    }
+}
+
+
+package com.googlecode.cassandra.jca.connection {
+    class CassandraConnectionImpl {
+        -ConnectionProvider mcf
+        +CassandraConnection(ConnectionProvider mcf)
+        +Cassandra.Iface getInternalConnection()
+        +void close()
+    }
+
+    class ClosedCassandraIface
+}
+
+
+package com.googlecode.cassandra.jca.connectionfactory {
+
+    class CassandraConnectionFactoryImpl {
+        -CassandraManagedConnectionFactory mcf
+        -ConnectionManager cxManager
+        +CassandraConnectionFactory(CassandraManagedConnectionFactory mcf, ConnectionManager cxManager)
+        +CassandraConnection getConnection()
+    }
+
+    class CassandraManagedConnectionFactory {
+        CassandraConnectionFactory createConnectionFactory(ConnectionManager cxManager)
+    }
+
+    class CassandraProperties
+}
+
+
+package com.googlecode.cassandra.jca.managed.connection {
+
+    class CassandraIfaceWrapper
+    
+    class CassandraManagedConnectionImpl {
+        -CassandraConnection cassandraConnection
+        +CassandraManagedConnectionImpl(CassandraProperties properties)
+        +CassandraIfaceWrapper getInternalConnection()
+    }
+
+    class CassandraManagedConnectionMetaData
+
+    interface ConnectionProvider {
+        +void close()
+        +CassandraIfaceWrapper getInternalConnection()
+    }
+}
+
+package com.googlecode.cassandra.jca.ra {
+    class CassandraResourceAdapter
+}
+
+CassandraIfaceWrapper -.-|> "Cassandra.Iface"
+CassandraIfaceWrapper "1" -- "1" "Cassandra.Iface"
+ClosedCassandraIface -.-|> "Cassandra.Iface"
+
+CassandraManagedConnectionFactory -.-|> ManagedConnectionFactory
+CassandraManagedConnectionFactory -.-|> ValidatingManagedConnectionFactory
+CassandraManagedConnectionFactory -.-|> ResourceAdapterAssociation
+
+
+CassandraConnectionImpl --|> CassandraConnection
+CassandraConnectionFactoryImpl --|> CassandraConnectionFactory
+CassandraConnectionImpl "1" -- "1" CassandraIfaceWrapper
+CassandraManagedConnectionImpl -.-|> ManagedConnection
+CassandraManagedConnectionImpl -.-|> ConnectionProvider
+CassandraManagedConnectionFactory --|> CassandraProperties
+CassandraManagedConnectionMetaData -.-|> ManagedConnectionMetaData
+
+@enduml

@@ -1,0 +1,31 @@
+@startuml
+
+skinparam componentStyle uml2
+
+participant "Application Component"
+participant CassandraConnectionFactory
+participant CassandraManagedConnection
+
+box "Application Server" #LightBlue
+	participant ConnectionManager
+	participant "Application Server"
+end box
+
+"Application Component" -> "Application Server": lookup ConnectionFactory
+"Application Server" -> CassandraManagedConnectionFactory: createConnectionFactory()
+"Application Server" <-- CassandraManagedConnectionFactory: return CassandraConnectionFactory
+"Application Component" <-- "Application Server": return CassandraConnectionFactory
+
+"Application Component" -> CassandraConnectionFactory: getConnection()
+
+CassandraConnectionFactory -> ConnectionManager: allocateConnection()
+ConnectionManager -> "Application Server"
+"Application Server" -> CassandraManagedConnectionFactory: createManagedConnection()
+"Application Server" <-- CassandraManagedConnectionFactory: return CassandraManagedConnection
+ConnectionManager <-- "Application Server": return CassandraManagedConnection
+ConnectionManager -> CassandraManagedConnection: getConnection()
+ConnectionManager <-- CassandraManagedConnection: return CassandraConnection
+CassandraConnectionFactory <-- ConnectionManager: return CassandraConnection
+"Application Component" <-- CassandraConnectionFactory: return CassandraConnection
+
+@enduml
