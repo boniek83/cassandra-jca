@@ -12,7 +12,7 @@
     <artifactId>cassandra-jca-parent</artifactId>
     <packaging>pom</packaging>
     <name>cassandra-jca-parent</name>
-    <version>1.0.12.0</version>
+    <version>1.0.12.1-SNAPSHOT</version>
     <description />
     <url>http://code.google.com/p/cassandra-jca/source/browse/</url>
     
