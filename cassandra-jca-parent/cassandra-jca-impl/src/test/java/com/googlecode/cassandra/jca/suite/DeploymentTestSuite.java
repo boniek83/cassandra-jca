@@ -16,13 +16,13 @@
  */
 package com.googlecode.cassandra.jca.suite;
 
-import org.apache.cassandra.thrift.CassandraDaemon;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
 import com.googlecode.cassandra.jca.connectionfactory.CassandraJCATest;
+import org.apache.cassandra.service.CassandraDaemon;
 
 /**
  *

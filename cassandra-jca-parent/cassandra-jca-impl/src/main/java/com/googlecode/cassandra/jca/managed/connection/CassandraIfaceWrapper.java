@@ -219,4 +219,29 @@ public class CassandraIfaceWrapper implements Cassandra.Iface {
     public void set_cql_version(String string) throws InvalidRequestException, TException {
         iface.set_cql_version(string);
     }
+
+    @Override
+    public void atomic_batch_mutate(Map<ByteBuffer, Map<String, List<Mutation>>> mutation_map, ConsistencyLevel consistency_level) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
+        iface.atomic_batch_mutate(mutation_map, consistency_level);
+    }
+
+    @Override
+    public ByteBuffer trace_next_query() throws TException {
+        return iface.trace_next_query();
+    }
+
+    @Override
+    public CqlResult execute_cql3_query(ByteBuffer query, Compression compression, ConsistencyLevel consistency) throws InvalidRequestException, UnavailableException, TimedOutException, SchemaDisagreementException, TException {
+        return iface.execute_cql3_query(query, compression, consistency);
+    }
+
+    @Override
+    public CqlPreparedResult prepare_cql3_query(ByteBuffer query, Compression compression) throws InvalidRequestException, TException {
+        return iface.prepare_cql3_query(query, compression);
+    }
+
+    @Override
+    public CqlResult execute_prepared_cql3_query(int itemId, List<ByteBuffer> values, ConsistencyLevel consistency) throws InvalidRequestException, UnavailableException, TimedOutException, SchemaDisagreementException, TException {
+        return iface.execute_prepared_cql3_query(itemId, values, consistency);
+    }
 }

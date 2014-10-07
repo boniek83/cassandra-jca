@@ -207,4 +207,24 @@ public class ClosedCassandraIface implements Cassandra.Iface {
     public void set_cql_version(String string) throws InvalidRequestException, TException {
         throw new ClosedCassandraIfaceException(ERROR_MESSAGE);
     }
+
+    public void atomic_batch_mutate(Map<ByteBuffer, Map<String, List<Mutation>>> mutation_map, ConsistencyLevel consistency_level) throws InvalidRequestException, UnavailableException, TimedOutException, TException {
+        throw new ClosedCassandraIfaceException(ERROR_MESSAGE);
+    }
+
+    public ByteBuffer trace_next_query() throws TException {
+        throw new ClosedCassandraIfaceException(ERROR_MESSAGE);
+    }
+
+    public CqlResult execute_cql3_query(ByteBuffer query, Compression compression, ConsistencyLevel consistency) throws InvalidRequestException, UnavailableException, TimedOutException, SchemaDisagreementException, TException {
+        throw new ClosedCassandraIfaceException(ERROR_MESSAGE);
+    }
+
+    public CqlPreparedResult prepare_cql3_query(ByteBuffer query, Compression compression) throws InvalidRequestException, TException {
+        throw new ClosedCassandraIfaceException(ERROR_MESSAGE);
+    }
+
+    public CqlResult execute_prepared_cql3_query(int itemId, List<ByteBuffer> values, ConsistencyLevel consistency) throws InvalidRequestException, UnavailableException, TimedOutException, SchemaDisagreementException, TException {
+        throw new ClosedCassandraIfaceException(ERROR_MESSAGE);
+    }
 }
