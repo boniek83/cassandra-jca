@@ -7,7 +7,7 @@
 <connection-factories>
     <no-tx-connection-factory>
         <jndi-name>eis/CassandraConnectionFactory</jndi-name>
-        <rar-name>cassandra-jca-jboss-ear-0.0.1-SNAPSHOT.ear#cassandra-jca-rar-1.2.5.1.rar</rar-name>
+        <rar-name>cassandra-jca-jboss-ear-0.0.1-SNAPSHOT.ear#cassandra-jca-rar-1.2.6.1.rar</rar-name>
         <connection-definition>com.googlecode.cassandra.jca.api.CassandraConnectionFactory</connection-definition>
 
         <config-property name="Server" type="java.lang.String">localhost</config-property>
